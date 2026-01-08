@@ -1,0 +1,21 @@
+# file structure
+
+nt-bird-detect/
+├── config/                 # YAML/JSON files for sensor IDs and paths
+├── data/                   # Local testing data (git-ignored)
+│   ├── raw/                # Original .wav files (Bronze)
+│   ├── processed/          # Cleaned Parquet files (Silver)
+│   └── analytics/          # Aggregated insights (Gold)
+├── eda/                    # For EDA and prototyping only (notebooks)
+├── src/
+│   ├── ingestion/          # Scripts to move data from source to raw
+│   │   ├── sensor_audio.py
+│   │   └── weather_api.py
+│   ├── processing/         # Scripts to transform raw to parquet
+│   │   ├── audio_cleaning.py
+│   │   └── feature_extraction.py
+│   ├── aggregation/        # Scripts for summaries/reporting
+│   │   └── bird_counts.py
+│   └── utils/              # Shared code (logging, DB connections)
+├── main.py                 # Orchestrator to run the pipeline
+└── requirements.txt

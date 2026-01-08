@@ -1,7 +1,13 @@
-# ca_additions
+#### CA_Additions
+
+# Keep empty data directories
+data/**/*
+!data/**/.gitkeep
+
+# macOS system files
 .DS_Store
 
-
+#### https://github.com/github/gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
