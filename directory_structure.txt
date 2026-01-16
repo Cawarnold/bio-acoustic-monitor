@@ -1,21 +1,37 @@
 # file structure
 
-nt-bird-detect/
-├── config/                 # YAML/JSON files for sensor IDs and paths
-├── data/                   # Local testing data (git-ignored)
-│   ├── raw/                # Original .wav files (Bronze)
-│   ├── processed/          # Cleaned Parquet files (Silver)
-│   └── analytics/          # Aggregated insights (Gold)
-├── eda/                    # For EDA and prototyping only (notebooks)
-├── src/
-│   ├── ingestion/          # Scripts to move data from source to raw
-│   │   ├── sensor_audio.py
-│   │   └── weather_api.py
-│   ├── processing/         # Scripts to transform raw to parquet
-│   │   ├── audio_cleaning.py
-│   │   └── feature_extraction.py
-│   ├── aggregation/        # Scripts for summaries/reporting
-│   │   └── bird_counts.py
-│   └── utils/              # Shared code (logging, DB connections)
-├── main.py                 # Orchestrator to run the pipeline
-└── requirements.txt
+bio-acoustic-monitor/
+├── README.md
+├── nt-bird-detect/            # DATA PIPELINE ("The Engine")
+│   ├── config/                # YAML/JSON files for sensor IDs and paths
+│   ├── data/                  # Local testing data (git-ignored)
+│   │   ├── raw/               # Original .wav files (Bronze)
+│   │   ├── processed/         # Cleaned Parquet files (Silver)
+│   │   └── analytics/         # Aggregated insights (Gold)
+│   ├── eda/                   # For EDA and prototyping only (notebooks)
+│   ├── src/
+│   │   ├── ingestion/          # Scripts to move data from source to raw
+│   │   │   ├── sensor_audio.py
+│   │   │   └── weather_api.py
+│   │   ├── processing/         # Scripts to transform raw to parquet
+│   │   │   ├── audio_cleaning.py
+│   │   │   └── feature_extraction.py
+│   │   ├── aggregation/        # Scripts for summaries/reporting
+│   │   │   └── bird_counts.py
+│   │   └── utils/             # Shared code (logging, DB connections)
+│   ├── main.py                # Orchestrator to run the pipeline
+│   └── requirements.txt       # Librosa, Pandas, PyArrow, etc.
+│
+├── nt-bird-webapp/            # WEB APPLICATION ("The UI")
+│   ├── docs/                  # Documentation Folder
+│   │   ├── TDD.md             # Technical Design Document
+│   ├── backend/               # Flask API
+│   │   ├── app.py             # API Routes
+│   │   ├── database.py        # Logic to read from Gold/Silver data
+│   │   └── requirements.txt   # Flask, Flask-CORS, Gunicorn
+│   └── frontend/              # React.js (Vite)
+│       ├── src/               # Components, Pages, Assets
+│       ├── package.json
+│       └── vite.config.js
+│
+└── .gitignore                 # Root ignore for venvs, __pycache__, and /data
