@@ -1,12 +1,48 @@
 #### CA_Additions
 
+# Ignore Node.js dependencies
+node_modules/
+
+# --- Data & Audio ---
+*.wav
+*.mp3
+*.parquet
+*.db
+*.sqlite3
+
 # Keep empty data directories
 data/**/*
 !data/**/.gitkeep
 
+# Ignore
+Thumbs.db
+
 # macOS system files
 .DS_Store
 
+# --- Node.js (React/Frontend) ---
+
+# Ignore Node.js dependencies
+node_modules/
+dist/
+build/
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# --- Docker ---
+.dockerignore
+docker-volumes/
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+########################################
 #### https://github.com/github/gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
