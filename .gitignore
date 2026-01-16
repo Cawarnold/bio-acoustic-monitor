@@ -1,8 +1,5 @@
 #### CA_Additions
 
-# Ignore Node.js dependencies
-node_modules/
-
 # --- Data & Audio ---
 *.wav
 *.mp3
@@ -23,13 +20,33 @@ Thumbs.db
 # --- Node.js (React/Frontend) ---
 
 # Ignore Node.js dependencies
-node_modules/
-dist/
+node_modules
+dist
+dist-ssr
+*.local
 build/
 .eslintcache
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 
 # --- Docker ---
@@ -41,6 +58,13 @@ docker-volumes/
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+
+
+
+#### End CA_Additions
+########################################
+
 
 ########################################
 #### https://github.com/github/gitignore

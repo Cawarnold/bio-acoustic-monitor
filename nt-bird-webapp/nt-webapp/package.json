@@ -1,5 +1,5 @@
 {
-  "name": "react-with-flask",
+  "name": "nt-webapp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "api": "cd api && /opt/anaconda3/envs/nt_bird_webapp_conda_env_20260116/bin/flask run --no-debugger",
-    "__comment__api": "ca_note: the api variable above, starts the Flask API server inside venv environment"
+    "__comment_api": "the api variable above uses the env location to run flask"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -24,9 +24,6 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "vite": "npm:rolldown-vite@7.2.5"
-  },
-  "overrides": {
-    "vite": "npm:rolldown-vite@7.2.5"
+    "vite": "^7.2.4"
   }
 }
