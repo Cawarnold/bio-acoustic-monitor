@@ -21,6 +21,7 @@ Thumbs.db
 
 # Ignore Node.js dependencies
 node_modules
+.vite
 dist
 dist-ssr
 *.local
