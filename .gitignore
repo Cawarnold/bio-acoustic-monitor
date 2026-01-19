@@ -1,3 +1,4 @@
+########################################
 #### CA_Additions
 
 
@@ -8,6 +9,7 @@
 *.parquet
 *.db
 *.sqlite3
+*.csv
 
 # Keep empty data directories
 data/**/*
@@ -18,6 +20,13 @@ Thumbs.db
 
 # macOS system files
 .DS_Store
+
+# Environment files
+.env*
+!.env.example
+
+# Docker-related artifacts
+.docker/
 
 # --- Node.js (React/Frontend) ---
 
@@ -67,8 +76,34 @@ docker-volumes/
 
 #### End CA_Additions
 ########################################
+########################################
+#### Node.gitignore
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
+node_modules
+dist
+dist-ssr
+*.local
 
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+#### End Node.gitignore
+########################################
 ########################################
 #### https://github.com/github/gitignore
 # Byte-compiled / optimized / DLL files
