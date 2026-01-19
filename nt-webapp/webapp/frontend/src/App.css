@@ -1,42 +1,103 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.status-bar {
+  background: #f0f4f0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #2e7d32;
+  margin-bottom: 2rem;
+  border: 1px solid #c8e6c9;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Chart Styles */
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  width: 90vw;            /* Responsive width */
+  max-width: 900px;       /* Cap the width for large screens */
+  height: 350px;          /* MUST have a height for Recharts to render */
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.chart-container h3 {
+  margin-top: 0;
+  color: #1b5e20;
 }
 
-.card {
-  padding: 2em;
+.filter-container {
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-.read-the-docs {
-  color: #888;
+#bird-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+  font-size: 1rem;
+  background-color: white;
+  color: #2e7d32;
+  outline: none;
+  cursor: pointer;
+}
+
+#bird-select:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.stat-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border-bottom: 4px solid #4caf50;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h4 {
+  margin: 0;
+  color: #2e7d32;
+  text-transform: capitalize;
+}
+
+.stat-card .count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #1b5e20;
+}
+
+.stat-card .date {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
 }
