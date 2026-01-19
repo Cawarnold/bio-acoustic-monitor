@@ -1,0 +1,7 @@
+{
+  "name": "nt-webapp-backend",
+  "version": "0.0.0",
+  "scripts": {
+    "api": "cd ../frontend && npm run api"
+  }
+}
