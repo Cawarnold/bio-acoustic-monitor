@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "api": "cd api && /opt/anaconda3/envs/nt_bird_webapp_conda_env_20260116/bin/flask run --no-debugger",
+    "api": "cd ../backend && /opt/anaconda3/envs/nt_bird_webapp_conda_env_20260116/bin/flask run --no-debugger",
     "__comment_api": "the api variable above uses the env location to run flask"
   },
   "dependencies": {
