@@ -1,6 +1,10 @@
 # Bird Monitor Backend Dependencies
+
+# Web Server & API
 flask
 flask-cors
 gunicorn
+
+# Data Processing
 pandas
 pyarrow
