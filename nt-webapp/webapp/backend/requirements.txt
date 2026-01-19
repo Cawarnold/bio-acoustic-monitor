@@ -1,0 +1,4 @@
+# Bird Monitor Backend Dependencies
+flask
+flask-cors
+gunicorn
