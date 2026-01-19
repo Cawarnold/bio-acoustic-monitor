@@ -2,6 +2,9 @@ services:
   backend:
     build:
       context: ./backend
+    volumes:
+      # Map the analytics folder from the detect project to the webapp container
+      - ../../nt-bird-detect/data/analytics:/app/data:ro
     restart: always
 
   frontend:
