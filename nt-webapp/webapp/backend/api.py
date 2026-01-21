@@ -8,7 +8,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-DATA_DIR = "/app/data"
+DATA_DIR = "/app/data/analytics"
 
 @app.route('/api/time')
 def get_current_time():
