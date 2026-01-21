@@ -1,6 +1,0 @@
-# wrangcome_sm4_1.txt
-
-
-
-
-# ca_note: wrangcome_sm4_1 data is kept in initialIDA directory for now
