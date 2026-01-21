@@ -12,6 +12,7 @@
 *.csv
 
 # Keep empty data directories
+data/
 data/**/*
 !data/**/.gitkeep
 

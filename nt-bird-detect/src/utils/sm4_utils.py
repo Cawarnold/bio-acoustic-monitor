@@ -1,5 +1,13 @@
-import pandas as pd
 import os
+
+import pandas as pd
+
+from birdnetlib import Recording
+from birdnetlib.analyzer import Analyzer
+
+# ==========================================
+# Parse SM4 Summary Utility
+# ==========================================
 
 def parse_sm4_summary(raw_monitor_path, monitor_name):
     """
@@ -39,3 +47,92 @@ def parse_sm4_summary(raw_monitor_path, monitor_name):
         return None
         
     return pd.concat(all_dataframes, ignore_index=True)
+
+# ==========================================
+# Parse Audio File Utility
+# ==========================================
+
+def analyze_audio_file(analyzer, directory_path_file, lat, lon, date, min_conf):
+    """
+    Uses BirdNET to analyze a single wav file and returns detections.
+    """
+    recording = Recording(
+        analyzer,
+        directory_path_file,
+        lat=lat,
+        lon=lon,
+        date=date,
+        min_conf=min_conf,
+    )
+    
+    # We run the analysis and return the result list
+    recording.analyze()
+    return recording.detections
+
+# ==========================================
+# Get Monitor Coordinates Utility
+# ==========================================
+
+def get_monitor_coords(processed_dir, monitor_name):
+    """
+    Reads the processed summary log to find coordinates.
+    """
+    monitor_summary_log_path = os.path.join(processed_dir, monitor_name, "monitor_summary_log.parquet")
+    
+    if os.path.exists(monitor_summary_log_path):
+        df_log = pd.read_parquet(monitor_summary_log_path)
+        # We take the last recorded location in the log
+        latest_entry = df_log.iloc[-1]
+        
+        lat = float(latest_entry['LAT'])
+        lon = float(latest_entry['LON'])
+        
+        # Adjust longitude if it is marked as West
+        if str(latest_entry['EW']).strip().lower() == 'w':
+            lon = -abs(lon)
+            
+        return lat, lon
+    
+    # Fallback if no log is found
+    print(f"!! No summary log found at {monitor_summary_log_path}. Using defaults.")
+    return 50.9481, -3.2503
+
+# ==========================================
+# Processing Manifest Utilities
+# ==========================================
+
+def get_processing_manifest(processed_dir, monitor_name):
+    """
+    Loads the manifest parquet. If it doesn't exist, creates a new one.
+    processed: means that we have sent the file to birdnet for analysis
+    success: means that birdnet returned results for that file
+    """
+    manifest_path = os.path.join(processed_dir, monitor_name, "processing_manifest.parquet")
+    print(f"Loading manifest from: {manifest_path}")
+    
+    if os.path.exists(manifest_path):
+        return pd.read_parquet(manifest_path)
+    
+    # Create an empty manifest with the structure you requested
+    return pd.DataFrame(columns=['file_name', 'processed', 'success', 'last_updated'])
+
+def update_manifest(df_manifest, file_name, processed, success):
+    """
+    Updates or adds a file's status in the manifest.
+    """
+    from datetime import datetime
+    
+    new_row = {
+        'file_name': file_name,
+        'processed': processed,
+        'success': success,
+        'last_updated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    
+    # If file exists, remove the old record before adding the new one
+    df_manifest = df_manifest[df_manifest['file_name'] != file_name]
+    df_manifest = pd.concat([df_manifest, pd.DataFrame([new_row])], ignore_index=True)
+    
+    return df_manifest
+
+# ==========================================
