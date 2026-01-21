@@ -44,13 +44,17 @@ def run_summary_log_processing():
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
-    # Call the utility function
-    df = parse_sm4_summary(raw_monitor_path)
+    # Call the utility function with the monitor name
+    df = parse_sm4_summary(raw_monitor_path, monitor_name)
     
     if df is not None:
+        print("\nPreview of combined data:")
+        print(df.head(5))
+        
         # Save to Parquet format
         df.to_parquet(output_file, index=False)
-        print(f"--- SUCCESS ---")
+        print(f"\n--- SUCCESS ---")
+        print(f"Combined {len(df)} rows from all DataLoad batches.")
         print(f"Saved metadata to: {output_file}")
 
 # ==========================================

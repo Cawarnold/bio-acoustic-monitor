@@ -1,20 +1,41 @@
 import pandas as pd
 import os
 
-def parse_sm4_summary(base_folder):
+def parse_sm4_summary(raw_monitor_path, monitor_name):
     """
-    Looks for the SM4 .txt summary file in the base_folder 
-    and returns it as a Pandas DataFrame.
+    Finds all 'DataLoad_YYYYMMDD' folders and extracts metadata.
+    In each folder, find the .txt summary file
+    and add monitor/file metadata columns,
+    then return it as a Pandas DataFrame.
     """
-    # Find any file ending in .txt
-    files = [f for f in os.listdir(base_folder) if f.endswith('.txt')]
-    
-    if not files:
-        print(f"!! No .txt file found in {base_folder}")
-        return None
+    all_dataframes = []
 
-    txt_path = os.path.join(base_folder, files[0])
-    
-    # Read the data, skipping the extra spaces after commas
-    df = pd.read_csv(txt_path, skipinitialspace=True)
-    return df
+    # 1. Look for folders starting with 'DataLoad'
+    dataload_folders = [f for f in os.listdir(raw_monitor_path) 
+                        if os.path.isdir(os.path.join(raw_monitor_path, f)) 
+                        and f.startswith('DataLoad')]
+
+    for folder in dataload_folders:
+        load_date = folder.replace('DataLoad_', '') # Extract '20260121'
+        folder_path = os.path.join(raw_monitor_path, folder)
+        
+        # 2. Look for the .txt file inside that specific DataLoad folder
+        txt_files = [f for f in os.listdir(folder_path) if f.endswith('.txt')]
+        
+        for file_name in txt_files:
+            txt_path = os.path.join(folder_path, file_name)
+            df = pd.read_csv(txt_path, skipinitialspace=True)
+
+            # 3. Add the columns you requested
+            df['monitor_name'] = monitor_name
+            df['dataload_batch'] = folder      # e.g., DataLoad_20260121
+            df['load_date'] = load_date        # e.g., 20260121
+            df['source_file'] = file_name
+            
+            all_dataframes.append(df)
+            print(f"Successfully parsed {file_name} from {folder}")
+
+    if not all_dataframes:
+        return None
+        
+    return pd.concat(all_dataframes, ignore_index=True)
