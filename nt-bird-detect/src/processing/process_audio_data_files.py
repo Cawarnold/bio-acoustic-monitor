@@ -17,6 +17,9 @@ RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
+# SETUP VARIABLES
+monitor_name = "wrangcombe_audio1"
+
 # ==========================================
 # 2. Import utility functions
 # ==========================================
@@ -36,9 +39,7 @@ from utils.sm4_utils import (
 
 def run_audio_analysis():
     print("--- Starting BirdNET Audio Analysis ---")
-    
-    # SETUP VARIABLES
-    monitor_name = "wrangcombe_audio1"
+
     # Update this to the specific DataLoad folder you want to process
     dataload_folder = "DataLoad_20260121"
     
@@ -50,7 +51,7 @@ def run_audio_analysis():
     min_conf = 0.5
 
     recordings_dir = os.path.join(RAW_DATA_DIR, monitor_name, dataload_folder, "Data")
-    output_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, "recordings_batch.parquet")
+    #output_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, "recordings_batch.parquet")
     manifest_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, "processing_manifest.parquet")
 
     # Initialize Analyzer once
@@ -63,8 +64,6 @@ def run_audio_analysis():
 
     # Get sorted list of audio files
     entries = sorted(os.listdir(recordings_dir))
-    all_new_detections = []
-    error_files = []
     counter = 0
 
     # Load manifest or create it - to check if file has already been processed
@@ -93,6 +92,9 @@ def run_audio_analysis():
             file_year, file_month, file_day = int(file[9:13]), int(file[13:15]), int(file[15:17]) # YYYY, MM, DD
             file_date_obj = datetime(year=file_year, month=file_month, day=file_day)
             
+            # Define output path - daily parquet file
+            daily_output_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, f"recordings_batch_{raw_date}.parquet")
+
             print(f"[{counter}/{len(entries)}] Analyzing: {file}")
             
             # Call utility function to analyze audio file
@@ -102,51 +104,34 @@ def run_audio_analysis():
             has_output = 1 if len(detections) > 0 else 0
 
             # Convert detections data into DataFrame and add metadata
-            df_file = pd.DataFrame(detections)
-            df_file['file_name'] = file
-            df_file['file_date'] = raw_date
-            df_file['file_time'] = raw_time
-            df_file['monitor_name'] = monitor_name
-            df_file['dataload_batch'] = dataload_folder
+            if has_output:
+                df_current = pd.DataFrame(detections)
+                df_current['file_name'] = file
+                df_current['file_date'] = raw_date
+                df_current['file_time'] = raw_time
+                df_current['monitor_name'] = monitor_name
+                df_current['dataload_batch'] = dataload_folder
+                
+                if os.path.exists(daily_output_path):
+                    df_existing = pd.read_parquet(daily_output_path)
+                    df_combined = pd.concat([df_existing, df_current], ignore_index=True)
+                else:
+                    df_combined = df_current
+                
+                df_combined.to_parquet(daily_output_path, index=False)
+                print(f"-> Saved {len(detections)} detections to {os.path.basename(daily_output_path)}")
             
-            all_new_detections.append(df_file)
-
             # Update manifest (In-Memory)
             df_manifest = update_manifest(df_manifest, file, processed=1, success=has_output)
-            print(df_manifest.head())
+            df_manifest.to_parquet(manifest_path, index=False)
+            print(df_manifest.tail(5))
 
         except Exception as e:
             print(f"!! Error with {file}: {e}")
             df_manifest = update_manifest(df_manifest, file, processed=1, success=0)
+            df_manifest.to_parquet(manifest_path, index=False)
 
-    # Concatenate all new detections (concatenates the dataframes in the list of dfs)
-    if all_new_detections:
-        print("\nConsolidating detections...")
-        df_combined_new_batch = pd.concat(all_new_detections, ignore_index=True)
-        
-        # Merge with existing if it exists
-        if os.path.exists(output_path):
-            print("Merging with existing record...")
-            df_old = pd.read_parquet(output_path)
-            df_combined_new_and_old = pd.concat([df_old, df_combined_new_batch], ignore_index=True)
-        else:
-            df_combined_new_and_old = df_combined_new_batch  
-        
-        # Ensure processed/audiomonitor directory exists and save
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        df_manifest.to_parquet(manifest_path, index=False)
-        print(f"--- SUCCESS: Manifest updated at {manifest_path} ---")
-
-        df_combined_new_and_old.to_parquet(output_path, index=False)
-        print(f"--- SUCCESS ---")
-        print(f"New detections added: {len(df_combined_new_batch)}")
-        print(f"Total detections in Parquet: {len(df_combined_new_and_old)}")
-        print(f"Saved to: {output_path}")
-    else:
-        print("No detections were processed.")
-
-    if error_files:
-        print(f"Warning: The following files failed: {error_files}")
+    print("\n--- Audio analysis batch complete ---")
 
 # ==========================================
 # 4. RUN THE FUNCTION

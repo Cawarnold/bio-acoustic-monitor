@@ -15,6 +15,9 @@ RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
+# Define the specific monitor we are working on
+monitor_name = "wrangcombe_audio1"
+
 # ==========================================
 # 2. Import utility functions
 # ==========================================
@@ -31,9 +34,6 @@ from utils.sm4_utils import parse_sm4_summary
 def run_summary_log_processing():
     print("--- Starting Monitor Summary Log Processing ---")
     
-    # Define the specific monitor we are working on
-    monitor_name = "wrangcombe_audio1"
-    
     # Input path: data/raw/wrangcombe_audio1/
     raw_monitor_path = os.path.join(RAW_DATA_DIR, monitor_name)
 
@@ -49,7 +49,7 @@ def run_summary_log_processing():
     
     if df is not None:
         print("\nPreview of combined data:")
-        print(df.head(5))
+        print(df.tail(5))
         
         # Save to Parquet format
         df.to_parquet(output_file, index=False)
