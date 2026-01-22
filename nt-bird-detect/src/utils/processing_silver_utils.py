@@ -1,9 +1,20 @@
 import os
+from glob import glob
 
 import pandas as pd
+import numpy as np
 
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
+
+# ==========================================
+# parse_sm4_summary() - Parse SM4 Summary Utility
+# analyze_audio_file() - Parse Audio File Utility
+# get_monitor_coords() - Get Monitor Coordinates Utility
+# get_processing_manifest() - Processing Manifest Utilities
+# update_manifest() - Processing Manifest Utilities
+# consolidate_daily_parquets() - Consolidate Daily Parquets Utility
+# ==========================================
 
 # ==========================================
 # Parse SM4 Summary Utility
@@ -136,3 +147,40 @@ def update_manifest(df_manifest, file_name, processed, success):
     return df_manifest
 
 # ==========================================
+# Consolidate Daily Parquets Utility
+# ==========================================
+
+def consolidate_daily_parquets(processed_dir, monitor_name):
+    """
+    Finds all daily recordings_batch_*.parquet files and merges them into a 
+    single master file for the dashboard.
+    uses glob and * to find all files matching the pattern.
+    1. Path to where the daily files live
+    2. Find all files
+    3. Read and concatenate 
+        - for each file in daily_files, read it as a dataframe and append to a list
+        - then concatenate all dataframes in the list
+    4. Save the master file
+    """
+    # 1. Path to where the daily files live
+    search_path = os.path.join(processed_dir, monitor_name, "recordings_batch_*.parquet")
+    master_output_path = os.path.join(processed_dir, monitor_name, "recordings_batch_MASTER.parquet")
+    
+    # 2. Find all files
+    daily_files = glob.glob(search_path)
+    
+    if not daily_files:
+        print(f"No daily files found in {search_path}")
+        return None
+
+    print(f"Consolidating {len(daily_files)} files...")
+
+    # 3. Read and concatenate
+    df_list = [pd.read_parquet(f) for f in daily_files]
+    df_master = pd.concat(df_list, ignore_index=True)
+
+    # 4. Save the master file
+    df_master.to_parquet(master_output_path, index=False)
+    print(f"Success: Master file created with {len(df_master)} total detections.")
+    
+    return master_output_path
