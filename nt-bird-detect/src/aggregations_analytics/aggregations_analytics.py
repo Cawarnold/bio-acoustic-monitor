@@ -39,7 +39,7 @@ from utils.analytics_gold_utils import (
 
 def aggregations_analytics():
     #monitor_name = "wrangcombe_audio1"
-    processed_recordings_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, "recordings_batch_MASTER.parquet")
+    processed_recordings_path = os.path.join(PROCESSED_DATA_DIR, monitor_name, "recordings_MASTER.parquet")
     analytics_dir = os.path.join(ANALYTICS_DATA_DIR, monitor_name)
     
     # Ensure analytics directory exists
