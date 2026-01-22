@@ -7,6 +7,7 @@
 
 
 # --- Images ---
+nt-webapp/webapp/frontend/public/background_images/wrangcombefarm_E93A0402_20260122.jpg
 frontend/public/background_images/*
 !frontend/public/background_images/.gitkeep
 
