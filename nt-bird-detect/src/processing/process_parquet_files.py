@@ -7,10 +7,12 @@ import glob
 # 1. DIRECTORY CONFIGURATION
 # ==========================================
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../")) # Adjusted for src location
+### Project Root Discovery
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) # dir of this file
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of project
 
-# Base Data Directories
+### Base Data Directories
+RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
@@ -23,7 +25,9 @@ monitor_name = "wrangcombe_audio1"
 
 # Add src to path for imports
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
-from utils.processing_silver_utils import consolidate_daily_parquets
+from utils.processing_silver_utils import (
+    consolidate_daily_parquets
+)
 
 # ==========================================
 # 3. Functions to run on parquet files

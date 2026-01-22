@@ -17,7 +17,7 @@ RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
-# SETUP VARIABLES
+# Define the specific monitor we are working on
 monitor_name = "wrangcombe_audio1"
 
 # ==========================================
