@@ -97,6 +97,23 @@ The following pattern is added to the root `.gitignore` file to ensure local ass
 frontend/public/background_images/
 
 
+## 🧪 Data Processing (BirdNET Pipeline)
+
+### Optimization Protocols
+To maintain performance as the "DataLoad" volume increases, the following rules are applied to `process_audio_data_files.py`:
+
+* **Manifest-First Check**: The `processing_manifest.parquet` is queried before any analysis to prevent redundant CPU cycles on previously analyzed files.
+* **Atomic Writes**: (Proposed) The script should transition to periodic saves to prevent data loss during long-running batch jobs.
+* **Storage Schema**: Detections are stored in Parquet format to ensure high compression and fast read times for the Flask API.
+
+### 3. Memory & I/O Optimization
+To prevent memory exhaustion during long-duration monitoring, the pipeline follows an "Atomic Load-and-Clear" pattern:
+* **Scope**: Dataframes (`df_existing`, `df_combined`) are scoped inside the file-processing loop, ensuring RAM is released after every file is saved.
+* **File Persistence**: Parquet files are closed immediately after I/O operations, preventing file-locking issues.
+* **Daily Partitioning**: RAM usage is capped by the maximum detections per 24-hour period, rather than the total project history.
+
+
+
 ---
 
 
