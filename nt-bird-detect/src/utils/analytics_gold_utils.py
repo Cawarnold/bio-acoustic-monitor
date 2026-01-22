@@ -9,40 +9,29 @@ import pandas as pd
 # Aggregations and Analytics Utilities
 # ==========================================
 
-def calculate_diversity_metrics(df):
+def calculate_species_daily_profiles(df):
     """
-    Calculates richness and Shannon Diversity Index (H).
+    Calculates Abundance, Occupancy, and Certainty per species per day.
+    Abundance	Total Call Count
+    Occupancy	% of 1 hour blocks occupied
+    Certainty	Average Confidence Score
     """
-    if df.empty:
-        return 0, 0
-    
-    # Species Richness: number of unique species
-    richness = df['label'].nunique()
-    
-    # Shannon Index Calculation
-    counts = df['label'].value_counts()
-    total = len(df)
-    probs = counts / total
-    shannon_h = -np.sum(probs * np.log(probs))
-    
-    return richness, round(shannon_h, 2)
 
-def aggregate_daily_stats(df):
-    """
-    Creates a summary of counts and diversity per day.
-    """
-    # Group by date to get daily counts
-    daily_groups = df.groupby('file_date')
-    
-    daily_data = []
-    for date, group in daily_groups:
-        richness, shannon = calculate_diversity_metrics(group)
-        daily_data.append({
-            'date': date,
-            'total_detections': len(group),
-            'species_richness': richness,
-            'shannon_index': shannon
-        })
-    
-    daily_stats = pd.DataFrame(daily_data)
-    return daily_stats
+    if df.empty:
+        return pd.DataFrame()
+
+    # 1. Ensure hour is available
+   # Ensure file_time is a string padded to 6 digits (HHMMSS)
+    df['file_time'] = df['file_time'].astype(str).str.zfill(6)
+    df['hour'] = df['file_time'].str[:2].astype(int)
+
+    # 2. Group and aggregate in one clean step
+    df_profiles = df.groupby(['file_date', 'label']).agg(
+        calls=('label', 'count'),              # Total abundance
+        hours_active=('hour', 'nunique'),      # Count unique hours
+        occupancy_pct=('hour', lambda x: round((x.nunique() / 24) * 100, 1)),  # Occupancy percentage
+        confidence=('confidence', 'mean'),      # Mean certainty
+        max_confidence=('confidence', 'max')    # Max certainty
+    ).reset_index()
+
+    return df_profiles

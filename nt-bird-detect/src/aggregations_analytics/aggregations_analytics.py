@@ -27,10 +27,7 @@ monitor_name = "wrangcombe_audio1"
 # Add src to path so we can import our utils
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
 from utils.analytics_gold_utils import (
-    aggregate_daily_species,
-    aggregate_daily_stats,
-    aggregate_daily_unique_species,
-    aggregate_hourly_activity
+    calculate_species_daily_profiles
 )
 
 # ==========================================
@@ -58,15 +55,15 @@ def aggregations_analytics():
 
     # DAILY UNIQUE SPECIES (For stacked area charts: Diversity over time)
     df_daily_unique_species = df.groupby(['file_date', 'label']).agg(count=('label', 'nunique')).reset_index()
-    df_daily_unique_species.to_parquet(os.path.join(analytics_dir, "df_daily_unique_species.parquet"), index=False)
+    df_daily_unique_species.to_parquet(os.path.join(analytics_dir, "daily_unique_species.parquet"), index=False)
 
     # HOURLY PATTERNS (For heatmaps: When are they singing?)
     df_hourly_activity_patterns = df.groupby(['file_time', 'label']).agg(count=('label', 'count')).reset_index()
     df_hourly_activity_patterns.to_parquet(os.path.join(analytics_dir, "hourly_activity_patterns.parquet"), index=False)
 
-    # DAILY STATS (For line charts: Activity over time)
-    df_daily_diversity = aggregate_daily_stats(df)
-    df_daily_diversity.to_parquet(os.path.join(analytics_dir, "daily_diversity.parquet"), index=False)
+    # Calculate species daily profiles
+    df_calculate_species_daily_profiles = calculate_species_daily_profiles(df)
+    df_calculate_species_daily_profiles.to_parquet(os.path.join(analytics_dir, "calculate_species_daily_profiles.parquet"), index=False)
 
     print(f"--- SUCCESS: aggregations_analytics layers created in {analytics_dir} ---")
 

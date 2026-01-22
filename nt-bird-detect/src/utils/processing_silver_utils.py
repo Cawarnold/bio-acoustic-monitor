@@ -167,7 +167,7 @@ def consolidate_daily_parquets(processed_dir, monitor_name):
     master_output_path = os.path.join(processed_dir, monitor_name, "recordings_MASTER.parquet")
     
     # 2. Find all files
-    daily_files = glob.glob(search_path)
+    daily_files = sorted(glob.glob(search_path))
     
     if not daily_files:
         print(f"No daily files found in {search_path}")
