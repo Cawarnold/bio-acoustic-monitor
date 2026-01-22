@@ -164,7 +164,7 @@ def consolidate_daily_parquets(processed_dir, monitor_name):
     """
     # 1. Path to where the daily files live
     search_path = os.path.join(processed_dir, monitor_name, "recordings_batch_*.parquet")
-    master_output_path = os.path.join(processed_dir, monitor_name, "recordings_batch_MASTER.parquet")
+    master_output_path = os.path.join(processed_dir, monitor_name, "recordings_MASTER.parquet")
     
     # 2. Find all files
     daily_files = glob.glob(search_path)
