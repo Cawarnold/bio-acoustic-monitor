@@ -6,26 +6,8 @@ import pandas as pd
 
 
 # ==========================================
-# Aggregate Daily and Hourly Analytics Utilities
+# Aggregations and Analytics Utilities
 # ==========================================
-
-def aggregate_daily_species(df_detections):
-    """
-    Summarizes total counts for each species per day.
-    """
-    # Group by Date and Species name, then count
-    daily_summary = df_detections.groupby(['file_date', 'label']).agg(count=('label', 'count')).reset_index()
-    return daily_summary
-
-def aggregate_hourly_activity(df_detections):
-    """
-    Groups detections by hour of the day (00-23).
-    """
-    # Extract the hour (first two digits of HHMMSS)
-    df_detections['hour'] = df_detections['file_time'].str[:2]
-
-    hourly_summary = df_detections.groupby(['hour', 'label']).agg(count=('label', 'count')).reset_index()
-    return hourly_summary
 
 def calculate_diversity_metrics(df):
     """
@@ -62,4 +44,5 @@ def aggregate_daily_stats(df):
             'shannon_index': shannon
         })
     
-    return pd.DataFrame(daily_data)
+    daily_stats = pd.DataFrame(daily_data)
+    return daily_stats
