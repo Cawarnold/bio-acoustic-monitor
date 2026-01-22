@@ -26,7 +26,7 @@ monitor_name = "wrangcombe_audio1"
 
 # Add src to path so we can import our utils
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
-from utils.sm4_utils import (
+from utils.processing_silver_utils import (
     analyze_audio_file, 
     get_monitor_coords, 
     get_processing_manifest, 

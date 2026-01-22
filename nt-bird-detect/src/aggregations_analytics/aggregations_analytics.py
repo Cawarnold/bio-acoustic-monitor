@@ -23,7 +23,7 @@ ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
 # Add src to path so we can import our utils
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
-from utils.recordings_analytics_utils import (
+from utils.analytics_gold_utils import (
     aggregate_daily_species,
     aggregate_daily_stats,
     aggregate_hourly_activity
