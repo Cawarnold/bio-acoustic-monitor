@@ -81,13 +81,80 @@ The React app is built with **Vite**, optimizing for speed and modern ESM suppor
 * **/src/pages**: Main views (Dashboard, History).
 * **/dist**: The production-ready output directory created by `npm run build`.
 
+
+
+### 1. Static Assets (Images/Photos)
+To keep the repository size manageable and optimize performance, images are handled as follows:
+
+* **Location**: All large UI assets (backgrounds, reference photos) are stored in `frontend/public/background_images/`.
+* **Referencing**: In React/CSS, these are accessed via absolute paths (e.g., `/background_images/filename.jpg`) without requiring JavaScript imports.
+* **Git Exclusion**: To prevent large binary files from bloating the Git history, the entire folder is excluded from version control.
+
+### 2. Update .gitignore
+The following pattern is added to the root `.gitignore` file to ensure local assets do not get pushed to GitHub:
+# Exclude local UI assets
+frontend/public/background_images/
+
+
 ---
 
+
+## 📦 Versioning & Recovery Strategy (v1.01+)
+
+### 1. Creating a Milestone Build (e.g., v1.01)
+When the dashboard reaches a stable state, "freeze" the current code into a tagged Docker image.
+
+1. **Update Version Tags**: In `docker-compose.yml`, set the `image:` name for your services:
+   ```yaml
+   services:
+     backend:
+       image: webapp-backend:v1.01
+     frontend:
+       image: webapp-frontend:v1.01
+
+2. **Generate the Image**: Run the build command to lock the current code into the Docker library:
+
+Bash
+
+docker-compose up --build -d
+
+3. **Tag the Source Code**: Sync your local files with the Docker version using Git to ensure you can find this exact code later:
+
+Bash
+
+git add .
+git commit -m "Stable v1.01: Added Analytics Layer and Dashboard Toggle"
+git tag -a v1.01 -m "Version 1.01 stable"
+
+### 2. Daily Development Workflow
+To avoid cluttering your Docker library with numerous version numbers during active coding, use the latest tag.
+
+Toggle to Dev: Comment out the versioned lines in docker-compose.yml and use latest:
+
+YAML
+
+# image: webapp-backend:v1.01
+image: webapp-backend:latest
+Iterate: Run docker-compose up --build as needed to refresh the latest image with your most recent code changes.
+
+### 3. Emergency Recovery Procedure
+If the "latest" version breaks or local files become corrupted, use this two-step recovery process.
+
+#### A. Revert the Live Environment (Docker)
+Restore the browser-facing application to a known working state immediately:
+1. Modify Configuration: Point docker-compose.yml back to the stable tag: image: webapp-backend:v1.01.
+2. Deploy Snapshot: Run docker-compose up -d (without the --build flag).
+3. Outcome: Docker will ignore your broken local files and run the "frozen" code stored inside the v1.01 image.
+
+#### B. Revert Local Source Code (Git)
+Reset your text files on your Mac to match the stable version to resume work from a clean slate:
+
+Bash
+
+# Warning: This will overwrite local changes to match the v1.01 tag
+git reset --hard v1.01
+
+
+
+
 ## 8. Development Roadmap
-- [x] Document system architecture and stack.
-- [x] Configure `.gitignore` for monorepo safety.
-- [x] Build React production assets via `npm run build`.
-- [x] Create `Dockerfile` for Flask backend.
-- [x] Create `nginx.conf` to bridge `dist` files and API.
-- [x] Compose `docker-compose.yml` to link services.
-- [ ] Implement Parquet reading logic in `backend/api.py`.
