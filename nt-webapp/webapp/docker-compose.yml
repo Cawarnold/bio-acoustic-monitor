@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
     # To swap between tag of latest (dev) and saving the latest stable version, 
-      # uncomment / comment the line below
+      # uncomment / comment the line below, then run `docker-compose up --build` again.
     #image: webapp-backend:v1.01  # This sets the name and tag
     volumes:
       # Map the analytics folder from the detect project to the webapp container

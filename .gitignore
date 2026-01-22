@@ -1,7 +1,14 @@
 ########################################
 #### CA_Additions
 
+# General notes:
+# to ignore files in directories do /dir/dir/*
+# but to keep empty directories use !dir/dir/.gitkeep
 
+
+# --- Images ---
+frontend/public/background_images/*
+!frontend/public/background_images/.gitkeep
 
 # --- Data & Audio ---
 *.wav
