@@ -82,6 +82,7 @@ The React app is built with **Vite**, optimizing for speed and modern ESM suppor
 * **/dist**: The production-ready output directory created by `npm run build`.
 
 
+## 8. 🖼️ Asset Management
 
 ### 1. Static Assets (Images/Photos)
 To keep the repository size manageable and optimize performance, images are handled as follows:
