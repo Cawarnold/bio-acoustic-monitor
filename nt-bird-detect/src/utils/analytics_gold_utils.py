@@ -13,7 +13,7 @@ def calculate_species_daily_profiles(df):
     """
     Calculates Abundance, Occupancy, and Certainty per species per day.
     Abundance	Total Call Count
-    Occupancy	% of 1 hour blocks occupied
+    Occupancy	% of 1 hour blocks occupied by this species
     Certainty	Average Confidence Score
     """
 
@@ -28,8 +28,8 @@ def calculate_species_daily_profiles(df):
     # 2. Group and aggregate in one clean step
     df_profiles = df.groupby(['file_date', 'label']).agg(
         calls=('label', 'count'),              # Total abundance
-        hours_active=('hour', 'nunique'),      # Count unique hours
-        occupancy_pct=('hour', lambda x: round((x.nunique() / 24) * 100, 1)),  # Occupancy percentage
+        hours_active=('hour', 'nunique'),      # Count unique hours (how many hours had detections from this species)
+        occupancy_pct=('hour', lambda x: round((x.nunique() / 24) * 100, 2)),  # Occupancy percentage
         confidence=('confidence', 'mean'),      # Mean certainty
         max_confidence=('confidence', 'max')    # Max certainty
     ).reset_index()
