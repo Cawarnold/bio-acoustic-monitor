@@ -80,8 +80,8 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     # --- bio-acoustic-monitor mappings ---
-    - ../src:/opt/airflow/src    # Maps your scripts folder
-    - ../data:/opt/airflow/data  # Maps your audio and parquet data
+    - ../nt-bird-detect/src:/opt/airflow/src    # Maps scripts folder - ../from_dir:/to_dir
+    - ../nt-bird-detect/data:/opt/airflow/data  # Maps data folder
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
