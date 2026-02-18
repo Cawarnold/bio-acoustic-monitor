@@ -1,0 +1,7 @@
+pandas
+numpy
+pendulum
+pyarrow
+birdnetlib
+librosa
+soundfile

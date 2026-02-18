@@ -26,7 +26,7 @@ PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
 
 # Define the specific monitor we are working on
-monitor_name = "wrangcombe_audio1"
+monitor_name = "wrangcombe_audio2"
 
 # ==========================================
 # 2. Import utility functions
