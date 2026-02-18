@@ -5,7 +5,7 @@ import os
 
 # Default settings for the pipeline
 @dag(
-    dag_id="nature_thrive_monitor",
+    dag_id="bio_acoustic_monitor_pipeline",
     start_date=datetime(2026, 1, 1),
     schedule="@daily",  # Runs once a day
     catchup=False,      # Don't run for past dates
