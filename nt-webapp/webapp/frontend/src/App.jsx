@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import DashboardWelcome from './DashboardWelcome';
 import './App.css';
 
-function App() {
+function Dashboard() {
   // --- Original State ---
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedBird, setSelectedBird] = useState('');
+  const [selectedBird2, setSelectedBird2] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
 
@@ -15,6 +18,7 @@ function App() {
   const [dailyStats, setDailyStats] = useState([]);
   const [speciesTotals, setSpeciesTotals] = useState([]);
   const [hourlyPatterns, setHourlyPatterns] = useState([]);
+  const [lastFetchTime, setLastFetchTime] = useState(new Date());
 
   useEffect(() => {
     // 1. Fetch heartbeat
@@ -47,6 +51,7 @@ function App() {
       setDailyStats(typeof dailyJson === 'string' ? JSON.parse(dailyJson) : dailyJson);
       setSpeciesTotals(typeof speciesJson === 'string' ? JSON.parse(speciesJson) : speciesJson);
       setHourlyPatterns(typeof hourlyJson === 'string' ? JSON.parse(hourlyJson) : hourlyJson);
+      setLastFetchTime(new Date());
       
       setLoading(false);
     })
@@ -62,6 +67,11 @@ function App() {
     setFilteredData(allData.filter(item => item.bird === bird));
   };
 
+  const handleBirdChange2 = (event) => {
+    const bird = event.target.value;
+    setSelectedBird2(bird);
+  };
+
   // Derived state for the original dropdown
   const birdTotals = allData.reduce((acc, item) => {
     acc[item.bird] = (acc[item.bird] || 0) + item.count;
@@ -69,10 +79,37 @@ function App() {
   }, {});
   const uniqueBirdsSorted = Object.keys(birdTotals).sort((a, b) => birdTotals[b] - birdTotals[a]);
 
+  // Calculate key metrics
+  const totalSpecies = uniqueBirdsSorted.length;
+  const totalDetections = Object.values(birdTotals).reduce((sum, count) => sum + count, 0);
+  const mostCommonSpecies = uniqueBirdsSorted[0] || 'None';
+  const lastUpdateMinutesAgo = Math.floor((new Date() - lastFetchTime) / 60000);
+
   return (
     <div className="dashboard">
       <header>
         <h1>NatureThrive: Bird Monitor</h1>
+        
+        {/* Key Metrics Cards */}
+        <div className="metrics-grid">
+          <div className="metric-card">
+            <p className="metric-label">Total Species Detected</p>
+            <p className="metric-value">{totalSpecies}</p>
+          </div>
+          <div className="metric-card">
+            <p className="metric-label">Total Detections</p>
+            <p className="metric-value">{totalDetections.toLocaleString()}</p>
+          </div>
+          <div className="metric-card">
+            <p className="metric-label">Most Common Species</p>
+            <p className="metric-value">{mostCommonSpecies}</p>
+          </div>
+          <div className="metric-card">
+            <p className="metric-label">Last Update</p>
+            <p className="metric-value">{lastUpdateMinutesAgo === 0 ? 'Now' : `${lastUpdateMinutesAgo}m ago`}</p>
+          </div>
+        </div>
+
         <div className="nav-controls">
             <button onClick={() => setCurrentView('summary')} className={currentView === 'summary' ? 'active' : ''}>Summary View</button>
             <button onClick={() => setCurrentView('analytics')} className={currentView === 'analytics' ? 'active' : ''}>Advanced Analytics</button>
@@ -90,35 +127,36 @@ function App() {
             /* --- ORIGINAL VIEW --- */
             <div className="view-summary">
               <div className="filter-container">
-                <label htmlFor="bird-select">Select Bird Species: </label>
-                <select id="bird-select" value={selectedBird} onChange={handleBirdChange}>
-                  {uniqueBirdsSorted.map(bird => (
-                    <option key={bird} value={bird}>{bird} ({birdTotals[bird]} total)</option>
-                  ))}
-                </select>
+                <div className="bird-selector">
+                  <label htmlFor="bird-select-1">Bird 1: </label>
+                  <select id="bird-select-1" value={selectedBird} onChange={handleBirdChange}>
+                    {uniqueBirdsSorted.map(bird => (
+                      <option key={bird} value={bird}>{bird} ({birdTotals[bird]} total)</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="bird-selector">
+                  <label htmlFor="bird-select-2">Bird 2: </label>
+                  <select id="bird-select-2" value={selectedBird2} onChange={handleBirdChange2}>
+                    <option value="">-- Select to compare --</option>
+                    {uniqueBirdsSorted.map(bird => (
+                      <option key={bird} value={bird}>{bird} ({birdTotals[bird]} total)</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="chart-container">
-                <h3>{selectedBird} Detections</h3>
+                <h3>Species Comparison</h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <AreaChart data={filteredData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="count" stroke="#2e7d32" fill="#a5d6a7" />
+                    <Area type="monotone" dataKey="count" stroke="#2e7d32" fill="#a5d6a7" name={selectedBird} />
                   </AreaChart>
                 </ResponsiveContainer>
-              </div>
-
-              <div className="stats-grid">
-                {filteredData.map((item, index) => (
-                  <div key={index} className="stat-card">
-                    <h4>{item.bird}</h4>
-                    <p className="count">{item.count} calls</p>
-                    <p className="date">{item.date}</p>
-                  </div>
-                ))}
               </div>
             </div>
           ) : (
@@ -167,6 +205,17 @@ function App() {
         </main>
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<DashboardWelcome />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
