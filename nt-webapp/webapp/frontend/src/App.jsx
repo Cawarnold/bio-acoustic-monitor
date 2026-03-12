@@ -72,6 +72,31 @@ function Dashboard() {
     setSelectedBird2(bird);
   };
 
+  // Create combined data for comparison chart
+  const filteredData2 = selectedBird2 ? allData.filter(item => item.bird === selectedBird2) : [];
+
+  const combinedChartData = (() => {
+    const dateMap = {};
+    
+    filteredData.forEach(item => {
+      if (!dateMap[item.date]) dateMap[item.date] = {};
+      dateMap[item.date][selectedBird] = item.count;
+    });
+    
+    if (selectedBird2) {
+      filteredData2.forEach(item => {
+        if (!dateMap[item.date]) dateMap[item.date] = {};
+        dateMap[item.date][selectedBird2] = item.count;
+      });
+    }
+    
+    return Object.keys(dateMap).map(date => ({
+      date,
+      [selectedBird]: dateMap[date][selectedBird] || 0,
+      ...(selectedBird2 && { [selectedBird2]: dateMap[date][selectedBird2] || 0 })
+    })).sort((a, b) => new Date(a.date) - new Date(b.date));
+  })();
+
   // Derived state for the original dropdown
   const birdTotals = allData.reduce((acc, item) => {
     acc[item.bird] = (acc[item.bird] || 0) + item.count;
@@ -89,6 +114,10 @@ function Dashboard() {
     <div className="dashboard">
       <header>
         <h1>NatureThrive: Bird Monitor</h1>
+        
+        <div className="header-home-link">
+          <a href="/">← Home</a>
+        </div>
         
         {/* Key Metrics Cards */}
         <div className="metrics-grid">
@@ -149,12 +178,15 @@ function Dashboard() {
               <div className="chart-container">
                 <h3>Species Comparison</h3>
                 <ResponsiveContainer width="100%" height={300}>
-                  <AreaChart data={filteredData}>
+                  <AreaChart data={combinedChartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="count" stroke="#2e7d32" fill="#a5d6a7" name={selectedBird} />
+                    <Area type="monotone" dataKey={selectedBird} stroke="#2e7d32" fill="#a5d6a7" name={selectedBird} />
+                    {selectedBird2 && (
+                      <Area type="monotone" dataKey={selectedBird2} stroke="#1976d2" fill="#bbdefb" name={selectedBird2} />
+                    )}
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

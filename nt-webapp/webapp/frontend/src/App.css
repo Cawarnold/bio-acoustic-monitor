@@ -290,3 +290,20 @@
 .btn-secondary:hover {
   background: #f0f7f0;
 }
+
+.header-home-link {
+  margin-bottom: 15px;
+}
+
+.header-home-link a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.header-home-link a:hover {
+  color: #1b5e20;
+  text-decoration: underline;
+}
