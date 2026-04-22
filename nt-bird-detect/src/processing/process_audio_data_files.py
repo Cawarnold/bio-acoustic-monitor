@@ -8,7 +8,7 @@ from birdnetlib.analyzer import Analyzer
 # Files created by this script
 # ==========================================
 
-# For each day of .wav files, this script creates a parquet file named
+# For each day of .wav files, this script creates a parquet file named with that date
 # This script also creates a manifest parquet file to track processed files
 # to start process again on same files, delete the parquet files 
 
