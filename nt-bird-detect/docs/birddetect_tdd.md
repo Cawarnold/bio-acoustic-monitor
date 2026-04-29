@@ -1,4 +1,32 @@
-## 🏗️ Data Architecture & Pipeline
+## Data Architecture & Pipeline
+
+### 1. User Guide
+a. Clone from repo
+b. Copy data directory, with raw, processed, analytics directories inside from SSD or other location
+    b.1 OR, Point the RAW_DATA_DIR to the location of 'Data' directory and the '*Summary.txt' file.
+c. Build python environment
+    brew install pyenv
+    brew install ffmpeg
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    source ~/.zshrc
+    pyenv install 3.11.9
+    cd /Users/cawa/Developer/Github/PersonalGithub/bio-acoustic-monitor/nt-bird-detect
+    pyenv local 3.11.9
+    python3 -m venv .venv
+    source .venv/bin/activate 
+    pip install --upgrade pip
+    pip install birdnetlib librosa tensorflow ai_edge_litert resampy jupyterlab pyarrow
+    -- note, might need to include 'pip install ffmpeg' here 
+    pip install pandas dbt-duckdb
+    pip install matplotlib plotly seaborn
+    pip freeze > requirements.txt
+d. To test env in ipynb
+    python -m ipykernel install --user --name=nt-bird-detect --display-name "nt-bird-detect"
+    then cmd+shift+p, (ensure vs code extensions are installed)
+    might need a cmd+shift+p → Reload Window
+e. Run 'Workflow Execution Sequence' below
 
 ### 1. Ingestion Layer (Raw)
 This layer handles the movement of data from the field recorders into the local environment.
@@ -37,7 +65,8 @@ This layer prepares the master data for high-speed retrieval by the dashboard.
 
 ### 5. Workflow Execution Sequence
 To update the dashboard with new field data, run the following in order:
-1. `python src/process_monitor_summary_log.py` (Processing Phase A - process monitor log)
-2. `python src/process_audio_data_files.py` (Processing Phase A - process audio data)
-3. `python src/process_parquet_files.py` (Processing Phase B - merge daily audio tables)
-4. `python src/aggregations_analytics.py` (Aggregations & Analytics - create summary tables)
+1. `python src/processing/process_monitor_summary_log.py` (Processing Phase A - process monitor log)
+2. `caffeinate -i python src/processing/process_audio_data_files.py` (Processing Phase A - process audio data)
+    wrap command in caffeinate to keep laptop awake until script finishes
+3. `python src/processing/process_parquet_files.py` (Processing Phase B - merge daily audio tables)
+4. `python src/aggregations_analytics/aggregations_analytics.py` (Aggregations & Analytics - create summary tables)
