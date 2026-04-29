@@ -6,7 +6,7 @@
 # but to keep empty directories use !dir/dir/.gitkeep
 
 # --- Python versions ---
-*..python-version
+*.python-version
 
 # --- Images ---
 nt-webapp/webapp/frontend/public/background_images/
