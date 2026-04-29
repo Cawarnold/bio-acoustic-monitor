@@ -17,16 +17,19 @@ from birdnetlib.analyzer import Analyzer
 # ==========================================
 
 ### Project Root Discovery
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) # dir of this file
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of project
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) # dir of this file 'processing'
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of project 'nt-bird-detect'
 
 ### Base Data Directories
-RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data/raw")
-PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "data/processed")
-ANALYTICS_DATA_DIR = os.path.join(PROJECT_ROOT, "data/analytics")
+# /data/raw/wrangcombe_audio1/DataLoad_20260121
+home_dir = os.path.expanduser('~')
+data_directory_path = os.path.join(home_dir, 'Developer/Projects_NotesData/NT(bio-acoustic-monitor)')
+RAW_DATA_DIR = os.path.join(data_directory_path, "data/raw")
+PROCESSED_DATA_DIR = os.path.join(data_directory_path, "data/processed")
+ANALYTICS_DATA_DIR = os.path.join(data_directory_path, "data/analytics")
 
 # Define the specific monitor we are working on
-monitor_name = "wrangcombe_audio2"
+monitor_name = "wrangcombe_audio1"
 
 # ==========================================
 # 2. Import utility functions
@@ -49,7 +52,7 @@ def run_audio_analysis():
     print("--- Starting BirdNET Audio Analysis ---")
 
     # Update this to the specific DataLoad folder you want to process
-    dataload_folder = "DataLoad_20260121"
+    dataload_folder = "DataLoad_20260428" #"DataLoad_20260121"
     
     # Use the coordinates from your SM4 log
     lat, lon = get_monitor_coords(PROCESSED_DATA_DIR, monitor_name)
