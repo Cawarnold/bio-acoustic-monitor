@@ -5,6 +5,8 @@
 # to ignore files in directories do /dir/dir/*
 # but to keep empty directories use !dir/dir/.gitkeep
 
+# --- Python versions ---
+*..python-version
 
 # --- Images ---
 nt-webapp/webapp/frontend/public/background_images/
