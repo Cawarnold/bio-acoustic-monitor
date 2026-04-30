@@ -21,12 +21,34 @@ c. Build python environment
     -- note, might need to include 'pip install ffmpeg' here 
     pip install pandas dbt-duckdb
     pip install matplotlib plotly seaborn
+    pip install streamlit pandas plotly pyarrow # for the streamlit app
     pip freeze > requirements.txt
 d. To test env in ipynb
     python -m ipykernel install --user --name=nt-bird-detect --display-name "nt-bird-detect"
     then cmd+shift+p, (ensure vs code extensions are installed)
     might need a cmd+shift+p → Reload Window
 e. Run 'Workflow Execution Sequence' below
+
+### 2. Directory Structure
+```
+bio-acoustic-monitor/
+  nt-bird-detect/           ← processing pipeline (this repo)
+    src/
+    docs/
+    eda/
+  nt-streamlit/             ← Streamlit dashboard (separate repo)
+    data/                   ← analytics layer only, committed to GitHub
+      wrangcombe_audio1/
+        recordings_MASTER.parquet
+    app.py
+    requirements.txt
+
+data/                       ← stored externally (SSD or separate local path)
+  raw/                      ← .wav files (~500GB, growing ~100GB/month)
+  processed/                ← daily parquets + MASTER.parquet
+  analytics/                ← pre-aggregated parquet + csv outputs
+```
+After each pipeline run, copy `recordings_MASTER.parquet` from `data/processed/{monitor_name}/` into `nt-streamlit/data/{monitor_name}/` and push to trigger a Streamlit Cloud redeploy.
 
 ### 1. Ingestion Layer (Raw)
 This layer handles the movement of data from the field recorders into the local environment.
@@ -59,9 +81,9 @@ This layer prepares the master data for high-speed retrieval by the dashboard.
 ### 4. Storage Tiers
 | Tier | File Type | Logic |
 | :--- | :--- | :--- |
-| **Raw** | `.wav` | Unprocessed field recordings (Excluded from Git). |
-| **Processed** | `detections_YYYYMMDD.parquet` / `MASTER.parquet` | Cleaned, consolidated, and enriched detection data. |
-| **Analytics** | `daily_stats` / `species_totals` / `hourly` | Pre-aggregated JSON/Parquet tables optimized for UI performance. |
+| **Raw** | `.wav` | Unprocessed field recordings. Stored externally (~500GB, not in repo). |
+| **Processed** | `detections_YYYYMMDD.parquet` / `MASTER.parquet` | Cleaned, consolidated data. Stored externally, not in repo. |
+| **Analytics** | `species_totals` / `daily_unique_species` / `hourly_activity_patterns` / `csv/` | Pre-aggregated outputs. Stored externally in pipeline; copied to nt-streamlit for GitHub deployment. |
 
 ### 5. Workflow Execution Sequence
 To update the dashboard with new field data, run the following in order:
@@ -70,3 +92,5 @@ To update the dashboard with new field data, run the following in order:
     wrap command in caffeinate to keep laptop awake until script finishes
 3. `python src/processing/process_parquet_files.py` (Processing Phase B - merge daily audio tables)
 4. `python src/aggregations_analytics/aggregations_analytics.py` (Aggregations & Analytics - create summary tables)
+5. copy master file 
+6. to view dashboard loaclly run `streamlit run app.py`
