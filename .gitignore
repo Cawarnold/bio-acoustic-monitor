@@ -15,7 +15,7 @@ nt-webapp/webapp/frontend/public/background_images/
 # --- Data & Audio ---
 *.wav
 *.mp3
-*.parquet
+# *.parquet #commented out so we can have parquet in streamlit app
 *.db
 *.sqlite3
 *.csv

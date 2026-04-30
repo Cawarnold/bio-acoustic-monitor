@@ -6,7 +6,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Bio-Acoustic Monitor", layout="wide")
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "streamlit_data")
 monitor_name = "wrangcombe_audio1"
 
 

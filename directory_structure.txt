@@ -35,7 +35,7 @@ bio-acoustic-monitor/
 │       └── vite.config.js
 │
 ├── nt-streamlit/              # STREAMLIT DASHBOARD
-│   ├── data/                  # Committed to GitHub (small files only)
+│   ├── streamlit_data/        # Committed to GitHub (small files only)
 │   │   └── wrangcombe_audio1/
 │   │       └── recordings_MASTER.parquet
 │   ├── .streamlit/
