@@ -27,7 +27,7 @@ try:
 
     # Sidebar filters
     st.sidebar.header("Filters")
-    min_conf = st.sidebar.slider("Min Confidence", 0.0, 1.0, 0.5, 0.05)
+    min_conf = st.sidebar.slider("Min Confidence", 0.0, 1.0, 0.9, 0.05)
     date_range = st.sidebar.date_input("Date Range", [df['file_date'].min(), df['file_date'].max()])
 
     df_filtered = df[
