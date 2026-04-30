@@ -45,6 +45,9 @@ def aggregations_analytics():
     # Ensure analytics directory exists
     os.makedirs(analytics_dir, exist_ok=True)
 
+    csv_dir = os.path.join(analytics_dir, "csv")
+    os.makedirs(csv_dir, exist_ok=True)
+
     if not os.path.exists(processed_recordings_path):
         print("!! No processed data found to aggregate.")
         return
@@ -67,6 +70,13 @@ def aggregations_analytics():
     # Calculate species daily profiles
     df_calculate_species_daily_profiles = calculate_species_daily_profiles(df)
     df_calculate_species_daily_profiles.to_parquet(os.path.join(analytics_dir, "calculate_species_daily_profiles.parquet"), index=False)
+
+    # CSV EXPORTS (for sharing via spreadsheet)
+    df[df['confidence'] > 0.9].groupby('label').agg(counts=('scientific_name', 'count')).sort_values(by='counts', ascending=False).reset_index().to_csv(os.path.join(csv_dir, "bird_call_counts.csv"), index=False)
+
+    df[df['confidence'] > 0.9].groupby(['file_date', 'label']).agg(call_counts=('scientific_name', 'count')).sort_values(by=['file_date', 'call_counts'], ascending=[True, False]).reset_index().to_csv(os.path.join(csv_dir, "date_bird_call_counts.csv"), index=False)
+
+    df[df['confidence'] > 0.9].groupby(['file_date', 'file_time']).agg(call_counts=('scientific_name', 'count')).sort_values(by=['file_date', 'call_counts'], ascending=[True, False]).reset_index().to_csv(os.path.join(csv_dir, "date_time_call_counts.csv"), index=False)
 
     print(f"--- SUCCESS: aggregations_analytics layers created in {analytics_dir} ---")
 

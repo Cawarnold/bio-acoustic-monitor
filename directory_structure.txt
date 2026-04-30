@@ -34,4 +34,13 @@ bio-acoustic-monitor/
 │       ├── package.json
 │       └── vite.config.js
 │
+├── nt-streamlit/              # STREAMLIT DASHBOARD
+│   ├── data/                  # Committed to GitHub (small files only)
+│   │   └── wrangcombe_audio1/
+│   │       └── recordings_MASTER.parquet
+│   ├── .streamlit/
+│   │   └── config.toml
+│   ├── app.py
+│   └── requirements.txt
+│
 └── .gitignore                 # Root ignore for venvs, __pycache__, and /data
