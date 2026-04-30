@@ -69,7 +69,8 @@ try:
     top_species = df_filtered['common_name'].value_counts().head(15).index
     df_hourly = df_filtered[df_filtered['common_name'].isin(top_species)].groupby(['hour', 'common_name']).size().reset_index(name='count')
     df_pivot = df_hourly.pivot(index='common_name', columns='hour', values='count').fillna(0)
-    fig3 = px.imshow(df_pivot, labels={'x': 'Hour of Day', 'y': 'Species', 'color': 'Detections'}, aspect='auto', color_continuous_scale='Viridis')
+    df_pivot = df_pivot.div(df_pivot.max(axis=1), axis=0).fillna(0)
+    fig3 = px.imshow(df_pivot, labels={'x': 'Hour of Day', 'y': 'Species', 'color': 'Relative Activity'}, aspect='auto', color_continuous_scale='Viridis')
     fig3.update_xaxes(tickmode='linear', tick0=0, dtick=1)
     st.plotly_chart(fig3, use_container_width=True)
 
