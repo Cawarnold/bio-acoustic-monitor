@@ -68,7 +68,9 @@ try:
 
     top_species = df_filtered['common_name'].value_counts().head(15).index
     df_hourly = df_filtered[df_filtered['common_name'].isin(top_species)].groupby(['hour', 'common_name']).size().reset_index(name='count')
-    fig3 = px.density_heatmap(df_hourly, x='hour', y='common_name', z='count', labels={'hour': 'Hour of Day', 'common_name': 'Species', 'count': 'Detections'})
+    df_pivot = df_hourly.pivot(index='common_name', columns='hour', values='count').fillna(0)
+    fig3 = px.imshow(df_pivot, labels={'x': 'Hour of Day', 'y': 'Species', 'color': 'Detections'}, aspect='auto', color_continuous_scale='Viridis')
+    fig3.update_xaxes(tickmode='linear', tick0=0, dtick=1)
     st.plotly_chart(fig3, use_container_width=True)
 
     # Raw data
