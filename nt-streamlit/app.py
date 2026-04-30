@@ -60,6 +60,12 @@ try:
 
     # Hourly heatmap
     st.subheader("Hourly Activity by Species")
+
+    df_by_hour = df_filtered.groupby('hour').size().reset_index(name='count')
+    fig_hour = px.bar(df_by_hour, x='hour', y='count', labels={'hour': 'Hour of Day', 'count': 'Detections'})
+    fig_hour.update_xaxes(tickmode='linear', tick0=0, dtick=1)
+    st.plotly_chart(fig_hour, use_container_width=True)
+
     top_species = df_filtered['common_name'].value_counts().head(15).index
     df_hourly = df_filtered[df_filtered['common_name'].isin(top_species)].groupby(['hour', 'common_name']).size().reset_index(name='count')
     fig3 = px.density_heatmap(df_hourly, x='hour', y='common_name', z='count', labels={'hour': 'Hour of Day', 'common_name': 'Species', 'count': 'Detections'})
