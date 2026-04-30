@@ -92,5 +92,19 @@ To update the dashboard with new field data, run the following in order:
     wrap command in caffeinate to keep laptop awake until script finishes
 3. `python src/processing/process_parquet_files.py` (Processing Phase B - merge daily audio tables)
 4. `python src/aggregations_analytics/aggregations_analytics.py` (Aggregations & Analytics - create summary tables)
-5. copy master file 
+5. copy master file to streamlit location
 6. to view dashboard loaclly run `streamlit run app.py`
+
+
+
+### 6. Streamlit
+
+Streamlit Community Cloud is free and connects directly to GitHub. Here's how to deploy:                          
+                                                                                                                   
+  1. Go to share.streamlit.io and sign in with your GitHub account                                                  
+  2. Click New app
+  3. Fill in:                                                                                                       
+    - Repository: your-username/bio-acoustic-monitor
+    - Branch: main                                                                                                  
+    - Main file path: nt-streamlit/app.py                                                                           
+  4. Click Deploy                    
