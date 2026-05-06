@@ -54,11 +54,12 @@ try:
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("Species Explorer")
+    options = sorted(df_species["common_name"].tolist())
+    top_species_default = df_species.iloc[-1]["common_name"]
     selected_species = st.selectbox(
         "Select a species to learn more",
-        options=sorted(df_species["common_name"].tolist()),
-        index=None,
-        placeholder="Choose a species...",
+        options=options,
+        index=options.index(top_species_default),
     )
     if selected_species:
         sci_name = df_filtered[df_filtered["common_name"] == selected_species]["scientific_name"].iloc[0]
