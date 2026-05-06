@@ -1,0 +1,596 @@
+{
+  "Regulus regulus": {
+    "common_name": "Goldcrest",
+    "scientific_name": "Regulus regulus",
+    "extract": "The goldcrest is a very small passerine bird in the kinglet family. Its colourful golden crest feathers, as well as being called the \"king of the birds\" in European folklore, gives rise to its English and scientific names. The scientific name, R. regulus, means 'petty king' or prince. Several subspecies are recognised across the very large distribution range that includes much of the Palearctic and the islands of Macaronesia and Iceland. Birds from the north and east of its breeding range migrate to winter further south.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Goldcrest_1.jpg/330px-Goldcrest_1.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Goldcrest",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:25.694349"
+  },
+  "Erithacus rubecula": {
+    "common_name": "European robin",
+    "scientific_name": "Erithacus rubecula",
+    "extract": "The European robin, known simply as the robin or robin redbreast in the British Isles, is a small insectivorous passerine bird belonging to the Old World flycatcher family Muscicapidae. It is found across Europe, as far east as Western Siberia, and as far south as North Africa. It is sedentary in the west and south of its range, and migratory in the north and east of its range where winters are harsher.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/330px-Erithacus_rubecula_with_cocked_head.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/European_robin",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:26.246423"
+  },
+  "Phylloscopus collybita": {
+    "common_name": "Common chiffchaff",
+    "scientific_name": "Phylloscopus collybita",
+    "extract": "The common chiffchaff, or simply the chiffchaff, is a common and widespread leaf warbler which breeds in open woodlands throughout northern and temperate Europe and the Palearctic.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Common_Chiffchaff_2025_04_04_01.jpg/330px-Common_Chiffchaff_2025_04_04_01.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_chiffchaff",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:26.804790"
+  },
+  "Muscicapa striata": {
+    "common_name": "Spotted flycatcher",
+    "scientific_name": "Muscicapa striata",
+    "extract": "The spotted flycatcher is a small passerine bird in the Old World flycatcher family. It breeds in most of Europe and in the Palearctic to Siberia, and is migratory, wintering in Africa and south western Asia. It is declining in parts of its range.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Muscicapa_striata_%D0%BC%D1%83%D1%85%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D1%96%D1%80%D0%B0.jpg/330px-Muscicapa_striata_%D0%BC%D1%83%D1%85%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D1%96%D1%80%D0%B0.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Spotted_flycatcher",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:27.358672"
+  },
+  "Troglodytes troglodytes": {
+    "common_name": "Eurasian wren",
+    "scientific_name": "Troglodytes troglodytes",
+    "extract": "The Eurasian wren is a very small insectivorous bird and the only member of the wren family found in the Old World, specifically in Eurasia and Africa (Maghreb). In Anglophone Europe, it is commonly known simply as the wren. It has a very short tail which is often held erect, a short neck and a relatively long thin bill. It is russet brown above, paler buff-brown below, overall finely barred darker, and has a cream buff supercilium. The sexes are alike.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Eurasian_wren_Franconville_02.jpg/330px-Eurasian_wren_Franconville_02.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_wren",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:28.007405"
+  },
+  "Turdus iliacus": {
+    "common_name": "Redwing",
+    "scientific_name": "Turdus iliacus",
+    "extract": "The redwing is a bird in the thrush family, Turdidae, native to Europe and the Palearctic, slightly smaller than the related song thrush.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Redwing_Turdus_iliacus.jpg/330px-Redwing_Turdus_iliacus.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Redwing",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:28.564861"
+  },
+  "Motacilla alba": {
+    "common_name": "White wagtail",
+    "scientific_name": "Motacilla alba",
+    "extract": "The white wagtail is a small passerine bird in the family Motacillidae, which also includes pipits and longclaws. The species breeds in the Palearctic zone in most of Europe and Asia and parts of North Africa; it also has a toehold in western Alaska as a scarce breeder. It is resident in the mildest parts of its range, but otherwise migrates to Africa. In total, there are between 9 and 11 subspecies of M. alba; in Ireland and Great Britain, the black-backed subspecies known as the pied wagtail predominates.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/20180415_015_Winterswijk_Witte_kwikstaart_%2840785272624%29.jpg/330px-20180415_015_Winterswijk_Witte_kwikstaart_%2840785272624%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/White_wagtail",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:31.045375"
+  },
+  "Spinus spinus": {
+    "common_name": "Eurasian siskin",
+    "scientific_name": "Spinus spinus",
+    "extract": "The Eurasian siskin is a small passerine bird in the finch family Fringillidae. It is also called the European siskin, common siskin or just siskin. Other (archaic) names include black-headed goldfinch, barley bird and aberdevine. It is very common throughout Europe and Eurosiberia. It is found in forested areas, both coniferous and mixed woodland where it feeds on seeds of all kinds, especially of alder and conifers.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Eurasian_siskin_%28Spinus_spinus%29_male_Biebrzanski.jpg/330px-Eurasian_siskin_%28Spinus_spinus%29_male_Biebrzanski.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_siskin",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:31.606892"
+  },
+  "Pyrrhula pyrrhula": {
+    "common_name": "Eurasian bullfinch",
+    "scientific_name": "Pyrrhula pyrrhula",
+    "extract": "The Eurasian bullfinch or common bullfinch is a small passerine bird in the finch family, Fringillidae. In Anglophone Europe it is known simply as the bullfinch, as it is the original bird to bear the name bullfinch.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Bullfinch_male.jpg/330px-Bullfinch_male.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_bullfinch",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:32.160779"
+  },
+  "Certhia familiaris": {
+    "common_name": "Eurasian treecreeper",
+    "scientific_name": "Certhia familiaris",
+    "extract": "The Eurasian treecreeper or common treecreeper is a small passerine bird also known in the British Isles, where it is the only living member of its genus, simply as treecreeper. It is similar to other treecreepers, and has a curved bill, patterned brown upperparts, whitish underparts, and long stiff tail feathers which help it creep up tree trunks. It can be most easily distinguished from the similar short-toed treecreeper, which shares much of its European range, by its different song.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Eurasian_Treecreeper_-_Certhia_familiaris_%2854192274817%29.jpg/330px-Eurasian_Treecreeper_-_Certhia_familiaris_%2854192274817%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_treecreeper",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:34.015260"
+  },
+  "Aegithalos caudatus": {
+    "common_name": "Long-tailed tit",
+    "scientific_name": "Aegithalos caudatus",
+    "extract": "The long-tailed tit or long-tailed bushtit is a common bird species belonging to the bushtit family found throughout Eurasia. An insectivore, it inhabits deciduous and mixed woodlands as well as scrub, heathland, farmland, parks and gardens. The plumage of this small long-tailed bird is predominantly black and white with varying amounts of pink and grey. Northern subspecies are paler and have completely white heads, lacking the large dark eyebrows of southern populations. It is a social bird that forms compact family flocks of six to seventeen individuals outside of the breeding season, when these flocks break up. It has a strong preference for nesting in scrub areas and often builds its nest in thorny bushes less than 3 metres above the ground.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Long-tailed_tit_%2874940%29.jpg/330px-Long-tailed_tit_%2874940%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Long-tailed_tit",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:35.205466"
+  },
+  "Turdus merula": {
+    "common_name": "Common blackbird",
+    "scientific_name": "Turdus merula",
+    "extract": "The common blackbird is a species of true thrush. It is also known as the Eurasian blackbird, or simply the blackbird. It breeds in Europe, western Asia, and North Africa, and has been introduced to Australia and New Zealand. It has a number of subspecies across its large range; a few former Asian subspecies are now widely treated as separate species. Depending on latitude, the common blackbird may be resident, partially migratory, or fully migratory.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Common_Blackbird.jpg/330px-Common_Blackbird.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_blackbird",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:35.767540"
+  },
+  "Corvus frugilegus": {
+    "common_name": "Rook (bird)",
+    "scientific_name": "Corvus frugilegus",
+    "extract": "The rook is a member of the family Corvidae in the passerine order of birds. It is found in the Palearctic, its range extending from Scandinavia and western Europe to eastern Siberia. It is a large, gregarious, black-feathered bird, distinguished from similar species by the whitish featherless area on the face. Rooks nest collectively in the tops of tall trees, often close to farms or villages; the groups of nests are known as rookeries.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Rook_at_Slimbridge_Wetland_Centre%2C_Gloucestershire%2C_England_22May2019_arp.jpg/330px-Rook_at_Slimbridge_Wetland_Centre%2C_Gloucestershire%2C_England_22May2019_arp.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Rook_(bird)",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:36.327536"
+  },
+  "Phasianus colchicus": {
+    "common_name": "Common pheasant",
+    "scientific_name": "Phasianus colchicus",
+    "extract": "The common pheasant, ring-necked pheasant, or blue-headed pheasant, is a bird in the pheasant family (Phasianidae). The genus name comes from Latin phasianus 'pheasant'. The species name colchicus is Latin for 'of Colchis', a country on the Black Sea where pheasants became known to Europeans. Although Phasianus was previously thought to be closely related to the genus Gallus, the genus of junglefowl and domesticated chickens, recent studies show that they are in different subfamilies, having diverged over 20 million years ago.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Pheasant_%28Phasianus_colchicus%29_%E2%99%82_%2851028701818%29.jpg/330px-Pheasant_%28Phasianus_colchicus%29_%E2%99%82_%2851028701818%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_pheasant",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:38.813043"
+  },
+  "Cyanistes caeruleus": {
+    "common_name": "Eurasian blue tit",
+    "scientific_name": "Cyanistes caeruleus",
+    "extract": "The Eurasian blue tit is a small passerine bird in the tit family, Paridae. It is easily recognised by its blue and yellow plumage and small size.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Eurasian_blue_tit_%28Cyanistes_caeruleus_caeruleus%29_Biebrzanski.jpg/330px-Eurasian_blue_tit_%28Cyanistes_caeruleus_caeruleus%29_Biebrzanski.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_blue_tit",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:39.373531"
+  },
+  "Prunella modularis": {
+    "common_name": "Dunnock",
+    "scientific_name": "Prunella modularis",
+    "extract": "The dunnock is a small passerine, or perching bird, found throughout temperate Europe and into Asian Russia. Dunnocks have also been introduced and become common in New Zealand. It is the most widespread member of the accentor family; most other accentors are limited to mountain habitats. Other, largely archaic, English names for the dunnock include hedge accentor, hedge sparrow, hedge warbler, and titling.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Dunnock_%28Prunella_modularis%29_3.jpg/330px-Dunnock_%28Prunella_modularis%29_3.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dunnock",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:39.932665"
+  },
+  "Columba palumbus": {
+    "common_name": "Common wood pigeon",
+    "scientific_name": "Columba palumbus",
+    "extract": "The common wood pigeon, also known simply as the wood pigeon, is a large pigeon native to the western Palearctic. It belongs to the genus Columba, which includes closely related species such as the rock dove. It has a flexible diet, feeding mainly on plant material, including cereals, and is therefore considered an agricultural pest. Wood pigeons are extensively hunted over much of their range, but this does not appear to have a major impact on their population numbers.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Columba_palumbus_EM1B1397_%2827445478998%29.jpg/330px-Columba_palumbus_EM1B1397_%2827445478998%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_wood_pigeon",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:40.482924"
+  },
+  "Parus major": {
+    "common_name": "Great tit",
+    "scientific_name": "Parus major",
+    "extract": "The great tit is a small passerine bird in the tit family Paridae. It is widespread and common throughout Europe, the Middle East, Central Asia and as far east as the Amur River. It also occurs in parts of North Africa where it is generally resident in any sort of woodland. Most great tits do not migrate, except in extremely harsh winters. Until 2005 this species was lumped with numerous other subspecies. However, DNA studies have revealed that these subspecies are distinct from the great tit, and they have now been classified as two distinct species, the cinereous tit of southern Asia, and the Japanese tit of East Asia. The great tit remains the most widespread species in the genus Parus.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg/330px-Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Great_tit",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:41.041051"
+  },
+  "Chloris chloris": {
+    "common_name": "European greenfinch",
+    "scientific_name": "Chloris chloris",
+    "extract": "The European greenfinch or simply the greenfinch is a small passerine bird in the finch family Fringillidae.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Chloris_chloris_%28profile%29.jpg/330px-Chloris_chloris_%28profile%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/European_greenfinch",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:41.603666"
+  },
+  "Carduelis carduelis": {
+    "common_name": "European goldfinch",
+    "scientific_name": "Carduelis carduelis",
+    "extract": "The European goldfinch or simply referred to as the goldfinch is a small passerine bird in the finch family that is native to the Palearctic zone in Europe, northern Africa, and western Asia. It has been introduced to other areas, including Australia, New Zealand, Uruguay and the United States.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/072_Wild_European_goldfinch_at_the_Parc_Jura_vaudois_Photo_by_Giles_Laurent.jpg/330px-072_Wild_European_goldfinch_at_the_Parc_Jura_vaudois_Photo_by_Giles_Laurent.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/European_goldfinch",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:42.159387"
+  },
+  "Corvus cornix": {
+    "common_name": "Hooded crow",
+    "scientific_name": "Corvus cornix",
+    "extract": "The hooded crow, also colloquially called just hoodie, is a Eurasian bird subspecies of the carrion crow in the genus Corvus. Widely distributed, it is found across Northern, Eastern, and Southeastern Europe, as well as parts of the Middle East. It is an ashy-grey bird with black head, throat, wings, tail, and thigh feathers, as well as a black bill, eyes, and feet. Like other corvids, it is an omnivorous and opportunistic forager and feeder.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Corvus_cornix_Hooded_Crow_Croatia_1076.jpg/330px-Corvus_cornix_Hooded_Crow_Croatia_1076.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Hooded_crow",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:42.711142"
+  },
+  "Pica pica": {
+    "common_name": "Eurasian magpie",
+    "scientific_name": "Pica pica",
+    "extract": "The Eurasian magpie or common magpie is a resident breeding bird throughout the northern part of the Eurasian continent. It is one of several birds in the crow family (corvids) that are designated as magpies, and it belongs to the Holarctic radiation of \"monochrome\" magpies. In Europe, the term \"magpie\" is used by English speakers as a synonym for the Eurasian magpie; the only other species of magpie in Europe is the Iberian magpie, which is restricted to the Iberian Peninsula. Despite sharing a name and similar colouration, they are not closely related to the Australian magpie, which is an artamid.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Eurasian_magpie_%2810860%29.jpg/330px-Eurasian_magpie_%2810860%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_magpie",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:43.267635"
+  },
+  "Corvus monedula": {
+    "common_name": "Western jackdaw",
+    "scientific_name": "Corvus monedula",
+    "extract": "The western jackdaw, also known as the Eurasian jackdaw, the European jackdaw, or simply the jackdaw, is a passerine bird in the crow family. It is found across Europe, western Asia and western North Africa; it is mostly resident, although northern and eastern populations migrate south in the winter. Four subspecies are recognised, which differ mainly in the darker or paler greyscale of the plumage on the head and nape. Linnaeus first described it formally, giving it the name Corvus monedula. The common name derives from the word jack, denoting \"small\", and daw, a less common synonym for \"jackdaw\", and the native English name for the bird.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Nordic_jackdaw_%2852563242448%29.jpg/330px-Nordic_jackdaw_%2852563242448%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Western_jackdaw",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:44.470991"
+  },
+  "Numenius arquata": {
+    "common_name": "Eurasian curlew",
+    "scientific_name": "Numenius arquata",
+    "extract": "The Eurasian curlew or common curlew is a very large wader in the family Scolopacidae. It is one of the most widespread of the curlews, breeding across temperate Europe and Asia. In Europe, this species is often referred to just as the \"curlew\", and in Scotland known as the \"whaup\" in Scots.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Eurasian_Curlew.jpg/330px-Eurasian_Curlew.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_curlew",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:45.018570"
+  },
+  "Phylloscopus trochilus": {
+    "common_name": "Willow warbler",
+    "scientific_name": "Phylloscopus trochilus",
+    "extract": "The willow warbler is a very common and widespread leaf warbler which breeds throughout northern and temperate Europe and the Palearctic, from Ireland east to the Anadyr River basin in eastern Siberia. It is strongly migratory, with almost all of the population wintering in sub-Saharan Africa.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Willow_Warbler_Phylloscopus_trochilus.jpg/330px-Willow_Warbler_Phylloscopus_trochilus.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Willow_warbler",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:47.511104"
+  },
+  "Fringilla coelebs": {
+    "common_name": "Eurasian chaffinch",
+    "scientific_name": "Fringilla coelebs",
+    "extract": "The Eurasian chaffinch, common chaffinch, or simply the chaffinch is a common and widespread small passerine bird in the finch family. The male is brightly coloured with a blue-grey cap and rust-red underparts. The female is more subdued in colouring, but both sexes have two contrasting white wing bars and white sides to the tail. The male bird has a strong voice and sings from exposed perches to attract a mate.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Male_Chaffinch_-_Fringilla_coelebs.jpg/330px-Male_Chaffinch_-_Fringilla_coelebs.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_chaffinch",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:48.071443"
+  },
+  "Garrulus glandarius": {
+    "common_name": "Eurasian jay",
+    "scientific_name": "Garrulus glandarius",
+    "extract": "The Eurasian jay, also known simply as the jay without any epithets in the United Kingdom and Ireland, is a species of passerine bird in the crow family Corvidae. It has pinkish brown plumage with a black stripe on each side of a whitish throat, a bright blue panel on the upper wing and a black tail. The Eurasian jay is a woodland bird that occurs over a vast region from western Europe and north-west Africa to the Indian subcontinent and farther to the eastern seaboard of Asia and down into south-east Asia. Across this vast range, several distinct racial forms have evolved which look different from each other, especially when comparing forms at the extremes of its range.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Garrulus_glandarius_1_Luc_Viatour.jpg/330px-Garrulus_glandarius_1_Luc_Viatour.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_jay",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:49.948216"
+  },
+  "Phoenicurus ochruros": {
+    "common_name": "Black redstart",
+    "scientific_name": "Phoenicurus ochruros",
+    "extract": "The black redstart is a small passerine bird in the genus Phoenicurus. Like its relatives, it was formerly classed as a member of the thrush family (Turdidae), but is now known to be an Old World flycatcher (Muscicapidae). Obsolete common names include Tithys redstart, blackstart and black redtail.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hausrotschwanz_Brutpflege_2006-05-21-05.jpg/330px-Hausrotschwanz_Brutpflege_2006-05-21-05.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Black_redstart",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:50.504363"
+  },
+  "Curruca communis": {
+    "common_name": "Common whitethroat",
+    "scientific_name": "Curruca communis",
+    "extract": "The common whitethroat or greater whitethroat is a common and widespread Old World warbler which breeds throughout Europe and across much of temperate western Asia. This small passerine bird is strongly migratory, and winters in tropical Africa, Arabia, and Pakistan.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Common_Whitethroat.jpg/330px-Common_Whitethroat.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_whitethroat",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:51.701185"
+  },
+  "Hirundo rustica": {
+    "common_name": "Barn swallow",
+    "scientific_name": "Hirundo rustica",
+    "extract": "The barn swallow is the most widespread species of swallow in the world, occurring on all continents, with vagrants reported even in Antarctica. It is a distinctive passerine bird with blue upperparts and a long, deeply forked tail. In Anglophone Europe, it is just called the swallow; in northern Europe, it is the only member of family Hirundinidae called a \"swallow\" rather than a \"martin\".",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rauchschwalbe_Hirundo_rustica.jpg/330px-Rauchschwalbe_Hirundo_rustica.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Barn_swallow",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:52.260369"
+  },
+  "Columba oenas": {
+    "common_name": "Stock dove",
+    "scientific_name": "Columba oenas",
+    "extract": "The stock dove is a species of bird in the family Columbidae, the doves and pigeons. It is widely distributed in the western Palearctic, north to central Scandinavia and south to northwest Africa. Western and southern populations are resident, while northeastern populations are migratory to avoid the colder winters there. It is the type species of the genus Columba.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pigeon_colombin_%28Colulmba_oenas%29%2C_Parc_de_Woluwe%2C_Bruxelles_%2851921513878%29.jpg/330px-Pigeon_colombin_%28Colulmba_oenas%29%2C_Parc_de_Woluwe%2C_Bruxelles_%2851921513878%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Stock_dove",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:56.689227"
+  },
+  "Streptopelia decaocto": {
+    "common_name": "Eurasian collared dove",
+    "scientific_name": "Streptopelia decaocto",
+    "extract": "The Eurasian collared dove, often simply just collared dove, is a dove species native to Europe, Asia, and northern Africa. It has also been introduced to Japan, North and Central America, and the islands in the Caribbean.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/2022-04-06_Streptopelia_decaocto%2C_Plovdiv%2C_Bulgaria_1.jpg/330px-2022-04-06_Streptopelia_decaocto%2C_Plovdiv%2C_Bulgaria_1.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_collared_dove",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:59.188317"
+  },
+  "Actitis hypoleucos": {
+    "common_name": "Common sandpiper",
+    "scientific_name": "Actitis hypoleucos",
+    "extract": "The common sandpiper is a small Palearctic wader. This bird and its American sister species, the spotted sandpiper, make up the genus Actitis. They are parapatric and replace each other geographically; stray birds of either species may settle down with breeders of the other and hybridize. Hybridization has also been reported between the common sandpiper and the green sandpiper, a member of the closely related genus Tringa.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Actitis_hypoleucos_-_Laem_Pak_Bia.jpg/330px-Actitis_hypoleucos_-_Laem_Pak_Bia.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_sandpiper",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:20:59.745855"
+  },
+  "Anser anser": {
+    "common_name": "Greylag goose",
+    "scientific_name": "Anser anser",
+    "extract": "The greylag goose is a species of large goose in the waterfowl family Anatidae and the type species of the genus Anser. It has mottled and barred grey and white plumage and an orange beak and pink legs. A large bird, it measures between 74 and 91 centimetres in length, with an average weight of 3.3 kilograms. Its distribution is widespread, with birds from the north of its range in Europe and Asia often migrating southwards to spend the winter in warmer places, although many populations are resident, even in the north. It is the ancestor of most breeds of domestic goose, having been domesticated at least as early as 1360\u00a0BCE. The genus name and specific epithet are from anser, the Latin for \"goose\". In the USA, its name has been spelled \"graylag\".",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Greylag_Goose_-_St_James%27s_Park%2C_London_-_Nov_2006.jpg/330px-Greylag_Goose_-_St_James%27s_Park%2C_London_-_Nov_2006.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Greylag_goose",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:00.388597"
+  },
+  "Ardea cinerea": {
+    "common_name": "Grey heron",
+    "scientific_name": "Ardea cinerea",
+    "extract": "The grey heron is a long-legged wading bird of the heron family, Ardeidae, native throughout temperate Europe and Asia, and also parts of Africa. It is resident in much of its range, but some populations from the more northern parts migrate southwards in autumn. A bird of wetland areas, it can be seen around lakes, rivers, ponds, marshes and on the sea coast. It feeds mostly on aquatic creatures which it catches after standing stationary beside or in the water, or stalking its prey through the shallows.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Grey_heron_2022_03_18_01.jpg/330px-Grey_heron_2022_03_18_01.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Grey_heron",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:00.945157"
+  },
+  "Linaria cannabina": {
+    "common_name": "Common linnet",
+    "scientific_name": "Linaria cannabina",
+    "extract": "The common linnet or Eurasian linnet is a small passerine bird of the finch family, Fringillidae. It derives its common name and the scientific name, Linaria, from its fondness for hemp seeds and flax seeds\u2014flax being the English name of the plant from which linen is made.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Carduelis_cannabina_-England_-male-8.jpg/330px-Carduelis_cannabina_-England_-male-8.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_linnet",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:01.505790"
+  },
+  "Motacilla cinerea": {
+    "common_name": "Grey wagtail",
+    "scientific_name": "Motacilla cinerea",
+    "extract": "The grey wagtail is a member of the wagtail family, Motacillidae, measuring around 18\u201319\u00a0cm overall length. The species looks somewhat similar to the yellow wagtail but has the yellow on its underside restricted to the throat and vent. Breeding males have a black throat. The species is widely distributed, with several populations breeding in Eurosiberia and migrating to tropical regions in Asia and Africa. The species is always associated with running water when breeding, although they may use man-made structures near streams for the nest. Outside the breeding season, they may also be seen around lakes, coasts and other watery habitats. Like other wagtails, they frequently wag their tail and fly low with undulations and they have a sharp call that is often given in flight.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gebirgsstelze_im_Geo-Naturpark_Bergstra%C3%9Fe-Odenwald.jpg/330px-Gebirgsstelze_im_Geo-Naturpark_Bergstra%C3%9Fe-Odenwald.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Grey_wagtail",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:02.309844"
+  },
+  "Gallinago gallinago": {
+    "common_name": "Common snipe",
+    "scientific_name": "Gallinago gallinago",
+    "extract": "The common snipe is a small, stocky wader native to the Old World, where it breeds in marshes, bogs, tundra and wet meadows. It is usually shy and well-camouflaged, foraging in soft mud mainly for insects and earthworms but also some plant material. During courtship, males perform a \"winnowing\" display; flying high in circles and then taking shallow dives to produce a \"drumming\" sound by vibrating the tail feathers.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Common_snipe_%28Gallinago_gallinago%29_2022.jpg/330px-Common_snipe_%28Gallinago_gallinago%29_2022.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_snipe",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:02.964600"
+  },
+  "Gallinula chloropus": {
+    "common_name": "Common moorhen",
+    "scientific_name": "Gallinula chloropus",
+    "extract": "The common moorhen, also known as the waterhen, is a bird species in the rail family (Rallidae). It is distributed across many parts of the Old World, across Africa, Europe, and Asia. It lives around well-vegetated marshes, ponds, canals and other wetlands. The species is not found in the polar regions or many tropical rainforests; generally it is one of the most common Old World rail species, together with the Eurasian coot in some regions.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Common_moorhen_%28Gallinula_chloropus%29_France.jpg/330px-Common_moorhen_%28Gallinula_chloropus%29_France.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_moorhen",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:03.614527"
+  },
+  "Anthus pratensis": {
+    "common_name": "Meadow pipit",
+    "scientific_name": "Anthus pratensis",
+    "extract": "The meadow pipit is a small passerine bird that breeds throughout much of the Palearctic, from south-eastern Greenland and Iceland east to just east of the Ural Mountains in Russia, and south to central France and Romania; an isolated population also occurs in the Caucasus Mountains. It is migratory over most of its range, wintering in southern Europe, North Africa, and south-western Asia, but is resident year-round in western Europe, although even here many birds move to the coast or lowlands in winter.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Wiesenpieper_Meadow_pipit.jpg/330px-Wiesenpieper_Meadow_pipit.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Meadow_pipit",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:04.259929"
+  },
+  "Tringa nebularia": {
+    "common_name": "Common greenshank",
+    "scientific_name": "Tringa nebularia",
+    "extract": "The common greenshank is a wader in the large family Scolopacidae, the typical waders. The genus name Tringa is the Neo-Latin name given to the green sandpiper by Aldrovandus in 1599 based on Ancient Greek trungas, a thrush-sized, white-rumped, tail-bobbing wading bird mentioned by Aristotle. The specific nebularia is from Latin nebula \"mist\". Like the Norwegian Skoddefoll, this refers to the greenshank's damp marshy habitat.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Common-Greenshank.jpg/330px-Common-Greenshank.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_greenshank",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:04.819361"
+  },
+  "Mareca penelope": {
+    "common_name": "Eurasian wigeon",
+    "scientific_name": "Mareca penelope",
+    "extract": "The Eurasian wigeon or European wigeon, also known as the widgeon or wigeon, is one of three extant species of wigeon in the dabbling duck genus Mareca. It is common and widespread within its Palearctic range.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Eurasian_wigeon_in_Sakai%2C_Osaka%2C_February_2016.jpg/330px-Eurasian_wigeon_in_Sakai%2C_Osaka%2C_February_2016.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_wigeon",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:05.460279"
+  },
+  "Mareca strepera": {
+    "common_name": "Gadwall",
+    "scientific_name": "Mareca strepera",
+    "extract": "The gadwall is a common and widespread dabbling duck in the family Anatidae.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gadwall-Anas-strepera.jpg/330px-Gadwall-Anas-strepera.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Gadwall",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:06.104059"
+  },
+  "Numenius phaeopus": {
+    "common_name": "Eurasian whimbrel",
+    "scientific_name": "Numenius phaeopus",
+    "extract": "The Eurasian whimbrel, also known as the white-rumped whimbrel in North America, is a wader in the large family Scolopacidae. It is one of the most widespread of the curlews, breeding across much of subarctic Palearctic region and Europe as far south as Scotland. This species and the Hudsonian whimbrel have recently been split, although some taxonomic authorities still consider them to be conspecific.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Whimbrel_%28Numenius_phaeopus%29_Dalvikurbyggd.jpg/330px-Whimbrel_%28Numenius_phaeopus%29_Dalvikurbyggd.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_whimbrel",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:06.752784"
+  },
+  "Turdus viscivorus": {
+    "common_name": "Mistle thrush",
+    "scientific_name": "Turdus viscivorus",
+    "extract": "The mistle thrush is a bird common to much of Europe, temperate Asia and North Africa. It is a year-round resident in a large part of its range, but northern and eastern populations migrate south for the winter, often in small flocks. It is a large thrush with pale grey-brown upper parts, a greyish-white chin and throat, and black spots on its pale yellow and off-white under parts. The sexes are similar in plumage, and its three subspecies show only minimal differences. The male has a loud, far-carrying song which is delivered even in wet and windy weather, earning the bird the old name of stormcock. Historically, the name was also sometimes spelled \"missel thrush\".",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turdus_viscivorus.001_-_Cardiff.jpg/330px-Turdus_viscivorus.001_-_Cardiff.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mistle_thrush",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:07.310869"
+  },
+  "Calidris alpina": {
+    "common_name": "Dunlin",
+    "scientific_name": "Calidris alpina",
+    "extract": "The dunlin is a small wader in the genus Calidris. The English name is a dialect form of \"dunling\", first recorded in 1531\u20131532. It derives from dun, \"dull brown\", with the suffix -ling, meaning a person or thing with the given quality.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Dunlin_%28Calidris_alpina%29_in_the_Delaware_Bay_at_Heislerville_Wildlife_Management_Area%2C_New_Jersey%2C_USA.png/330px-Dunlin_%28Calidris_alpina%29_in_the_Delaware_Bay_at_Heislerville_Wildlife_Management_Area%2C_New_Jersey%2C_USA.png",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dunlin",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:07.868759"
+  },
+  "Sturnus vulgaris": {
+    "common_name": "Common starling",
+    "scientific_name": "Sturnus vulgaris",
+    "extract": "The common starling, also known simply as the starling in Great Britain and Ireland, and as the European starling in North America, is a medium-sized passerine bird in the starling family, Sturnidae. It is about 20\u00a0cm (8\u00a0in) long and has glossy black plumage with a metallic sheen, which is speckled with white at some times of the year. The legs are pink and the bill is black in winter and yellow in summer; young birds have browner plumage than the adults. Its gift for mimicry has been noted in literature including the Mabinogion and the works of Pliny the Elder and William Shakespeare.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Toulouse_-_Sturnus_vulgaris_-_2012-02-26_-_3.jpg/330px-Toulouse_-_Sturnus_vulgaris_-_2012-02-26_-_3.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_starling",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:08.517835"
+  },
+  "Cisticola juncidis": {
+    "common_name": "Zitting cisticola",
+    "scientific_name": "Cisticola juncidis",
+    "extract": "The zitting cisticola, formerly also fan-tailed warbler or streaked fantail warbler is a widely distributed Old World warbler in the family Cisticolidae, whose breeding range includes western and southern Europe, Africa outside the deserts and rainforest, and southern Asia down to northern Australia. A small bird found mainly in grasslands, it is best identified by its rufous rump; in addition it lacks any gold on the collar and the brownish tail is tipped with white. During the breeding season males have a zigzagging flight display accompanied by regular \"zit\" calls that give it its English name. They build their pouch nest suspended within a clump of grass.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Zitting_cisticola_2024_04_19_%28cropped%29.jpg/330px-Zitting_cisticola_2024_04_19_%28cropped%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Zitting_cisticola",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:09.168884"
+  },
+  "Delichon urbicum": {
+    "common_name": "Western house martin",
+    "scientific_name": "Delichon urbicum",
+    "extract": "The western house martin, sometimes called the common house martin, northern house martin or, particularly in Europe, just house martin, is a migratory passerine bird of the swallow family which breeds in Europe, north Africa and west-central Asia; and winters in sub-Saharan Africa and southwestern Asia. It feeds on insects which are caught in flight, and it migrates to climates where flying insects are plentiful. It has a blue head and upperparts, white rump and pure white underparts, and is found in both open country and near human habitation. It is similar in appearance to the two other martin species of the genus Delichon, which are both endemic to eastern and southern Asia. It has two accepted subspecies.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mehlschwalbe_Delichon_urbicum.jpg/330px-Mehlschwalbe_Delichon_urbicum.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Western_house_martin",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:09.730783"
+  },
+  "Cettia cetti": {
+    "common_name": "Cetti's warbler",
+    "scientific_name": "Cettia cetti",
+    "extract": "Cetti's warbler is a small, brown warbler in the family Cettiidae, which breeds in southern and western Europe, northwest Africa and the east Palearctic as far as Afghanistan and northwest Pakistan. The sexes are alike. The bird is named after the 18th-century Italian zoologist, Francesco Cetti. This species is often difficult to see because of its skulking habits.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/37-090505-cettis-warbler-at-Kalloni-east-river.jpg/330px-37-090505-cettis-warbler-at-Kalloni-east-river.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Cetti's_warbler",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:10.375598"
+  },
+  "Fringilla montifringilla": {
+    "common_name": "Brambling",
+    "scientific_name": "Fringilla montifringilla",
+    "extract": "The brambling is a small passerine bird in the finch family Fringillidae. It has also been called the cock o' the north and the mountain finch. It is widespread and migratory, often seen in very large flocks.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pinson_du_nord.jpg/330px-Pinson_du_nord.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Brambling",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:11.028643"
+  },
+  "Alcedo atthis": {
+    "common_name": "Common kingfisher",
+    "scientific_name": "Alcedo atthis",
+    "extract": "The common kingfisher, also known as the Eurasian kingfisher and river kingfisher, is a small kingfisher with seven subspecies recognized within its wide distribution across Eurasia and North Africa. It is resident in much of its range, but migrates from areas where rivers freeze in winter.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Alcedo_atthis_-England-8_%28cropped%29.jpg/330px-Alcedo_atthis_-England-8_%28cropped%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_kingfisher",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:11.678131"
+  },
+  "Emberiza cirlus": {
+    "common_name": "Cirl bunting",
+    "scientific_name": "Emberiza cirlus",
+    "extract": "The cirl bunting is a passerine bird in the bunting family Emberizidae, a group now separated by most modern authors from the finches, Fringillidae.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Cirl_bunting_cropped.jpg/330px-Cirl_bunting_cropped.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Cirl_bunting",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:12.234865"
+  },
+  "Charadrius hiaticula": {
+    "common_name": "Common ringed plover",
+    "scientific_name": "Charadrius hiaticula",
+    "extract": "The common ringed plover, great ringed plover or ringed plover is a species of bird in the family Charadriidae. It breeds across much of northern Eurasia, as well as Greenland.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Common_ringed_plover_%28Charadrius_hiaticula%29_Oppdal.jpg/330px-Common_ringed_plover_%28Charadrius_hiaticula%29_Oppdal.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_ringed_plover",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:12.877266"
+  },
+  "Phylloscopus inornatus": {
+    "common_name": "Yellow-browed warbler",
+    "scientific_name": "Phylloscopus inornatus",
+    "extract": "The yellow-browed warbler is a leaf warbler which breeds in the east Palearctic. This warbler is strongly migratory and winters mainly in tropical South Asia and South-east Asia, but also in small numbers in western Europe. Like the rest of Phylloscopidae, it was formerly included in the Old World warbler assemblage.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Yellow-browed_warbler_%28Phylloscopus_inornatus%29%2C_Parc_du_Slot%2C_Woluw%C3%A9-St.-Lambert%2C_Brussels_%2834053989676%29.jpg/330px-Yellow-browed_warbler_%28Phylloscopus_inornatus%29%2C_Parc_du_Slot%2C_Woluw%C3%A9-St.-Lambert%2C_Brussels_%2834053989676%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Yellow-browed_warbler",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:13.531087"
+  },
+  "Emberiza schoeniclus": {
+    "common_name": "Common reed bunting",
+    "scientific_name": "Emberiza schoeniclus",
+    "extract": "The common reed bunting, or simply reed bunting, is a passerine bird in the bunting family Emberizidae. This species breeds throughout Europe and much of the Palearctic region. While most individuals migrate south in winter, those in the milder south and west of the range are resident. It is a common sight in reedbeds, but also breeds in drier open areas such as moorland and arable land. For example, it inhabits purple moor grass and rush pastures, which are designated as a Biodiversity Action Plan habitat in the UK. It occurs on poorly drained neutral and acid soils of the lowlands and upland fringe.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Reed_Bunting_-_Emberiza_schoeniclus_%2852015951301%29.jpg/330px-Reed_Bunting_-_Emberiza_schoeniclus_%2852015951301%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_reed_bunting",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:14.098722"
+  },
+  "Acanthis cabaret": {
+    "common_name": "Redpoll",
+    "scientific_name": "Acanthis cabaret",
+    "extract": "The redpoll is a species of small passerine bird in the finch family Fringillidae. It is the only species placed in the genus Acanthis. It breeds in the Arctic and north temperate Holarctic tundra and taiga. The redpoll was formerly widely treated as three species: the common or mealy redpoll, the arctic or hoary redpoll, and the lesser redpoll.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Carduelis_flammea_CT6.jpg/330px-Carduelis_flammea_CT6.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Redpoll",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:14.744637"
+  },
+  "Accipiter nisus": {
+    "common_name": "Eurasian sparrowhawk",
+    "scientific_name": "Accipiter nisus",
+    "extract": "The Eurasian sparrowhawk, also known as the northern sparrowhawk or simply the sparrowhawk, is a small bird of prey in the family Accipitridae. Adult male Eurasian sparrowhawks have bluish grey upperparts and orange-barred underparts; females and juveniles are brown above with brown barring below. The female is up to 25% larger than the male \u2013 one of the greatest size differences between the sexes in any bird species. Though it is a predator which specialises in catching woodland birds, the Eurasian sparrowhawk can be found in any habitat and often hunts garden birds in towns and cities. Males tend to take smaller birds, including tits, finches and sparrows; females catch primarily thrushes and starlings but are capable of killing birds weighing 500\u00a0g (18\u00a0oz) or more.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/%D0%AF%D1%81%D1%82%D1%80%D0%B5%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B5%D0%BB%D1%8F%D1%82%D0%BD%D0%B8%D0%BA_%28Accipiter_nisus%2C_m%29%2C_%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA.jpg/330px-%D0%AF%D1%81%D1%82%D1%80%D0%B5%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B5%D0%BB%D1%8F%D1%82%D0%BD%D0%B8%D0%BA_%28Accipiter_nisus%2C_m%29%2C_%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eurasian_sparrowhawk",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:15.387878"
+  },
+  "Emberiza citrinella": {
+    "common_name": "Yellowhammer",
+    "scientific_name": "Emberiza citrinella",
+    "extract": "The yellowhammer is a passerine bird in the bunting family that is native to Eurasia and has been introduced to New Zealand and Australia. Most European birds remain in the breeding range year-round, but the eastern subspecies is partially migratory, with much of the population wintering further south. The male yellowhammer has a bright yellow head, streaked brown back, chestnut rump, and yellow under parts. Other plumages are duller versions of the same pattern. The yellowhammer is common in open areas with some shrubs or trees, and forms small flocks in winter. Its song has a rhythm like \"A little bit of bread and no cheese\". The song is very similar to that of its closest relative, the pine bunting, with which it interbreeds.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Goldammer_Emberiza_citrinella.jpg/330px-Goldammer_Emberiza_citrinella.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Yellowhammer",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:15.941780"
+  },
+  "Tachybaptus ruficollis": {
+    "common_name": "Little grebe",
+    "scientific_name": "Tachybaptus ruficollis",
+    "extract": "The little grebe, also known as the dabchick, is a member of the grebe family of water birds. The genus name is from Ancient Greek takhus \"fast\" and bapto \"to sink under\". The specific ruficollis is from Latin rufus \"red\" and Modern Latin -collis, \"-necked\", itself derived from Latin collum \"neck\".",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Little_grebe_Zwergtaucher.jpg/330px-Little_grebe_Zwergtaucher.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Little_grebe",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:16.593308"
+  },
+  "Strix aluco": {
+    "common_name": "Tawny owl",
+    "scientific_name": "Strix aluco",
+    "extract": "The tawny owl, also called the brown owl, is a stocky, medium-sized owl in the family Strigidae. It is commonly found in woodlands across Europe, as well as western Siberia, and has seven recognized subspecies. The tawny owl's underparts are pale with dark streaks, whilst its upper body may be either brown or grey. The tawny owl typically makes its nest in a tree hole where it can protect its eggs and young against potential predators. It is non-migratory and highly territorial: as a result, when young birds grow up and leave the parental nest, if they cannot find a vacant territory to claim as their own, they will often starve.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Strix_aluco_3_%28Martin_Mecnarowski%29.jpg/330px-Strix_aluco_3_%28Martin_Mecnarowski%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tawny_owl",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:17.247560"
+  },
+  "Poecile palustris": {
+    "common_name": "Marsh tit",
+    "scientific_name": "Poecile palustris",
+    "extract": "The marsh tit is a Eurasian passerine bird in the tit family Paridae and genus Poecile, closely related to the willow tit, P\u00e8re David's and Songar tits. It is a small bird, around 12\u00a0cm (4.7\u00a0in) long and weighing 12\u00a0g (0.42\u00a0oz), with a black crown and nape, pale cheeks, brown back and greyish-brown wings and tail. Between 8 and 11 subspecies are recognised. Its close resemblance to the willow tit can cause identification problems, especially in the United Kingdom where the local subspecies of the two are very similar: they were not recognised as separate species until 1897.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Parus_palustris02.jpg/330px-Parus_palustris02.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Marsh_tit",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:17.899251"
+  },
+  "Passer domesticus": {
+    "common_name": "House sparrow",
+    "scientific_name": "Passer domesticus",
+    "extract": "The house sparrow is a bird of the sparrow family Passeridae, found in most parts of the world. It is a small bird that has a typical length of 16\u00a0cm (6.3\u00a0in) and a mass of 24\u201339.5\u00a0g (0.85\u20131.39\u00a0oz). Females and young birds are coloured pale brown and grey, and males have brighter black, white, and brown markings. One of about 25\u00a0species in the genus Passer, the house sparrow is native to most of Europe, the Mediterranean Basin, and a large part of Asia. Its intentional or accidental introductions to many regions, including parts of Australasia, Africa, and the Americas, make it the most widely distributed wild bird.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/House_sparrow_male_in_Prospect_Park_%2853532%29.jpg/330px-House_sparrow_male_in_Prospect_Park_%2853532%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/House_sparrow",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:20.381008"
+  },
+  "Gavia immer": {
+    "common_name": "Common loon",
+    "scientific_name": "Gavia immer",
+    "extract": "The common loon or great northern diver is a large member of the loon, or diver, family of birds. Breeding adults have a plumage that includes a broad black head and neck with a greenish, purplish, or bluish sheen, blackish or blackish-grey upperparts, and pure white underparts except some black on the undertail coverts and vent. Non-breeding adults are brownish with a dark neck and head marked with dark grey-brown. Their upperparts are dark brownish-grey with an unclear pattern of squares on the shoulders, and the underparts, lower face, chin, and throat are whitish. The sexes look alike, though males are significantly heavier than females. During the breeding season, loons live on lakes and other waterways in Canada, the northern United States, and southern parts of Greenland and Iceland. Small numbers breed on Svalbard and sporadically elsewhere in Arctic Eurasia. Common loons winter on both coasts of North America as far north as Newfoundland and Alaska, and as far south as Mexico, as well as on the Atlantic coast of Europe.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg/330px-Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Common_loon",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:22.229645"
+  },
+  "Branta leucopsis": {
+    "common_name": "Barnacle goose",
+    "scientific_name": "Branta leucopsis",
+    "extract": "The barnacle goose is a species of goose that belongs to the genus Branta of black geese, which contains species with extensive black in the plumage, distinguishing them from the grey Anser species. Despite its superficial similarity to the brant goose, genetic analysis has shown its closest relative is the cackling goose.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Barnacle-Goose.jpg/330px-Barnacle-Goose.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Barnacle_goose",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:31.262397"
+  },
+  "Cygnus olor": {
+    "common_name": "Mute swan",
+    "scientific_name": "Cygnus olor",
+    "extract": "The mute swan is a species of swan and a member of the family Anatidae within the waterfowl order. It is native to much of Europe and parts of Asia and the far north of Africa. It is an introduced species in North America, home to the largest populations outside of its native range, with additional smaller introductions in Australasia and Southern Africa. The name \"mute\" derives from it being less vocal than other swan species. Typically measuring 140 to 160\u00a0cm in length, this large swan is wholly white in plumage, with an orange beak bordered with black. It is recognisable by its pronounced knob atop the beak, which is larger in males.",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Mute_Swan_Emsworth2.JPG/330px-Mute_Swan_Emsworth2.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mute_swan",
+    "license": "CC BY-SA 3.0",
+    "fetched_at": "2026-05-06T08:21:37.609542"
+  }
+}
