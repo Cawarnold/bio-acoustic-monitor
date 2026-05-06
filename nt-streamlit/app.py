@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from bird_metadata import render_bird_card
 
 st.set_page_config(page_title="Bio-Acoustic Monitor", layout="wide")
 
@@ -51,6 +52,17 @@ try:
     df_species = df_filtered.groupby('common_name').size().reset_index(name='count').sort_values('count', ascending=True).tail(top_n)
     fig = px.bar(df_species, x='count', y='common_name', orientation='h', labels={'count': 'Detections', 'common_name': ''})
     st.plotly_chart(fig, use_container_width=True)
+
+    st.subheader("Species Explorer")
+    selected_species = st.selectbox(
+        "Select a species to learn more",
+        options=sorted(df_species["common_name"].tolist()),
+        index=None,
+        placeholder="Choose a species...",
+    )
+    if selected_species:
+        sci_name = df_filtered[df_filtered["common_name"] == selected_species]["scientific_name"].iloc[0]
+        render_bird_card(sci_name)
 
     # Daily detections
     st.subheader("Daily Detections")
