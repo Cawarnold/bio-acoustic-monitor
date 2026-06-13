@@ -1,7 +1,6 @@
 import os
 import sys
 import pandas as pd
-import glob
 
 # ==========================================
 # 1. DIRECTORY CONFIGURATION
@@ -11,23 +10,13 @@ import glob
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__)) # dir of this file
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of project
 
-### Base Data Directories
-# /data/raw/wrangcombe_audio1/DataLoad_20260121
-home_dir = os.path.expanduser('~')
-data_directory_path = '/Volumes/Extreme SSD/NatureThriveData'
-RAW_DATA_DIR = os.path.join(data_directory_path, "data/raw")
-PROCESSED_DATA_DIR = os.path.join(data_directory_path, "data/processed")
-ANALYTICS_DATA_DIR = os.path.join(data_directory_path, "data/analytics")
-
-# Define the specific monitor we are working on
-monitor_name = "wrangcombe_audio1"
-
 # ==========================================
-# 2. Import utility functions
+# 2. Import config & utility functions
 # ==========================================
 
-# Add src to path for imports
+# Add src to path so we can import config and utils
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
+from config import PROCESSED_DATA_DIR, monitor_name
 from utils.processing_silver_utils import (
     consolidate_daily_parquets
 )

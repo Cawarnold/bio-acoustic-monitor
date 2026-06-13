@@ -14,7 +14,26 @@ You should see `(.venv)` in your terminal prompt.
 
 ---
 
-### 2. Run the Pipeline
+### 2. How to Read the Code
+
+Every pipeline stage is split across **two files**. To understand any step, read them in this order:
+
+**1. `src/config.py` — the settings.**
+This is the single place that holds every environment/location value the pipeline uses:
+- `DATA_DIR` — the data root (the SSD path), overridable via the `NT_DATA_DIR` env var.
+- `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `ANALYTICS_DATA_DIR` — derived from `DATA_DIR`.
+- `monitor_name` — which monitor the run targets (e.g. `wrangcombe_audio1`), overridable via `NT_MONITOR_NAME`.
+
+If you want to know *where* data is read/written or *which monitor* is being processed, this is the only file you need to check. Change a value here and it applies across every script.
+
+**2. The script for that stage — the recipe.**
+Each entry-point script (`src/processing/*.py`, `src/aggregations_analytics/*.py`) reads top-to-bottom as the steps for that stage. It imports the values it needs from `config.py` at the top, so the logic stays uncluttered by long paths. Anything hardcoded *inside* a script (e.g. `dataload_folder`, `min_conf`) is deliberately kept local to that step, so it's visible exactly where it is used rather than hidden behind an abstraction.
+
+**Mental model:** `config.py` = *the settings*, the script = *the recipe*. Read config first to know the inputs, outputs, and target monitor; then read the script to follow what happens to them.
+
+---
+
+### 3. Run the Pipeline
 
 Run the following scripts in order from the project root:
 
@@ -46,7 +65,7 @@ Copy `recordings_MASTER.parquet` from `data/processed/wrangcombe_audio1/` into `
 
 ---
 
-### 3. Run Tests
+### 4. Run Tests
 
 From the project root with `.venv` active:
 ```

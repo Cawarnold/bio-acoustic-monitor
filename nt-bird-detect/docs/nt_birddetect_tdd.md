@@ -3,7 +3,9 @@
 ### 1. User Guide
 a. Clone from repo
 b. Copy data directory, with raw, processed, analytics directories inside from SSD or other location
-    b.1 OR, Point the RAW_DATA_DIR to the location of 'Data' directory and the '*Summary.txt' file.
+    b.1 OR, set the `NT_DATA_DIR` env var to your data root (the folder containing `data/raw`, `data/processed`, `data/analytics`); optionally set `NT_MONITOR_NAME` to switch monitors. If unset, the pipeline falls back to the default Extreme SSD path.
+       export NT_DATA_DIR="/Volumes/Extreme SSD/NatureThriveData"
+       export NT_MONITOR_NAME="wrangcombe_audio1"
 c. Build python environment
     brew install pyenv
     brew install ffmpeg
@@ -128,12 +130,10 @@ pytest tests/
 Observations from reviewing the pipeline scripts, utils, and tests. Captured as a backlog — not yet actioned.
 
 #### Configuration & structure
-* The directory config block (`data_directory_path`, `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `ANALYTICS_DATA_DIR`, `monitor_name`) is copy-pasted into all four entry-point scripts — centralise into a single `config.py` (or `.env`) imported everywhere.
-* The external data root `/Volumes/Extreme SSD/NatureThriveData` is hardcoded in every script and in `tests/conftest.py`. The User Guide mentions a `RAW_DATA_DIR` env var, but nothing actually reads one — wire up an env var / config so the path isn't baked into source.
-* `home_dir = os.path.expanduser('~')` is computed in three scripts but never used — dead code.
-* Each script appends to `sys.path` manually to import `utils`. Make `src` a proper package (`__init__.py` + `pyproject.toml`, installed via `pip install -e .`) so imports are clean and tests don't rely on path hacks.
-* Magic numbers are scattered: `min_conf=0.5` in the analyzer vs `confidence > 0.9` in the CSV exports vs `/ 24` for occupancy — promote to named config constants.
-* `monitor_name` is hardcoded to a single monitor in every script; no support for iterating multiple monitors (related to the multi-DataLoad goal in §9).
+* ✅ **Done** — Centralised all paths and the active monitor into `src/config.py`, imported by every entry-point script and by `tests/conftest.py`. The data root is overridable via the `NT_DATA_DIR` env var (monitor via `NT_MONITOR_NAME`) with a fallback default, so the SSD path is no longer baked into source. The duplicated config blocks and the dead `home_dir` line were removed.
+* ⏸️ **Won't do (for now)** — Each script appends to `sys.path` manually to import `config`/`utils`. The "proper" fix is to make `src` an installed package (`pyproject.toml` + `pip install -e .`). Decided not worth it: the bootstrap works fine, and packaging would add an install step / change run commands for little practical gain on a single-developer project. Revisit if the project grows or needs CI.
+* ⏸️ **Won't do — recommendation was flawed.** The original suggestion was to consolidate "scattered magic numbers" (`min_conf=0.5`, `confidence > 0.9`, `/ 24`) into shared constants. That advice misread the code: `min_conf=0.5` is the *detection floor* at ingestion (capture broadly) while `> 0.9` is a deliberately stricter *export filter* for shared CSVs — they are distinct decisions at distinct stages, not a duplicated value, so unifying them would be wrong. `/ 24` (hours per day) is self-evident in context. These literals are intentional and stay as-is.
+* ⏸️ **Won't do — intentional.** `monitor_name` is a single explicit value per pipeline run, by design. Keeping it hardcoded/visible means you can glance at a script and know exactly which monitor it will process, rather than tracing dynamic multi-monitor logic. Readability for a human running the script wins over abstraction here.
 
 #### Correctness / likely bugs
 * `daily_unique_species` groups by `['file_date', 'label']` then takes `nunique` of `label` — within each group that is always 1, so the metric doesn't measure what the comment ("Diversity over time") intends. Likely should count unique labels per `file_date`.
