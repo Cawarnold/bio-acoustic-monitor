@@ -182,5 +182,9 @@ def consolidate_daily_parquets(processed_dir, monitor_name):
     # 4. Save the master file
     df_master.to_parquet(master_output_path, index=False)
     print(f"Success: Master file created with {len(df_master)} total detections.")
-    
+
+    csv_output_path = os.path.join(processed_dir, monitor_name, "recordings_MASTER.csv")
+    df_master.to_csv(csv_output_path, index=False)
+    print(f"Success: CSV export created at {csv_output_path}")
+
     return master_output_path

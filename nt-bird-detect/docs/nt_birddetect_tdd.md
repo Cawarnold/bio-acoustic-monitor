@@ -67,6 +67,7 @@ The processing layer transforms raw audio into a structured, enriched master dat
 
 #### Phase B: Engineering (`process_parquet_files.py`)
 * **Consolidation**: Merges partitioned daily files into a single `recordings_batch_MASTER.parquet`.
+* **CSV Export**: Also writes `recordings_MASTER.csv` to the same directory for sharing/external use.
 * **Enrichment (Upcoming)**: Designated point for integrating secondary datasets, including GPS coordinates and weather data.
 * **Normalization**: Ensures data types and schemas are consistent for the entire project history.
 
@@ -82,7 +83,7 @@ This layer prepares the master data for high-speed retrieval by the dashboard.
 | Tier | File Type | Logic |
 | :--- | :--- | :--- |
 | **Raw** | `.wav` | Unprocessed field recordings. Stored externally (~500GB, not in repo). |
-| **Processed** | `detections_YYYYMMDD.parquet` / `MASTER.parquet` | Cleaned, consolidated data. Stored externally, not in repo. |
+| **Processed** | `detections_YYYYMMDD.parquet` / `MASTER.parquet` / `MASTER.csv` | Cleaned, consolidated data. Stored externally, not in repo. CSV produced alongside parquet for sharing. |
 | **Analytics** | `species_totals` / `daily_unique_species` / `hourly_activity_patterns` / `csv/` | Pre-aggregated outputs. Stored externally in pipeline; copied to nt-streamlit for GitHub deployment. |
 
 ### 5. Workflow Execution Sequence
