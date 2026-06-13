@@ -13,7 +13,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of
 ### Base Data Directories
 # /data/raw/wrangcombe_audio1/DataLoad_20260121
 home_dir = os.path.expanduser('~')
-data_directory_path = os.path.join(home_dir, 'Developer/Projects_NotesData/NT(bio-acoustic-monitor)')
+data_directory_path = '/Volumes/Extreme SSD/NatureThriveData'
 RAW_DATA_DIR = os.path.join(data_directory_path, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(data_directory_path, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(data_directory_path, "data/analytics")

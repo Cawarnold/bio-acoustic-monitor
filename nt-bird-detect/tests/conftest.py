@@ -2,8 +2,7 @@ import os
 import pytest
 
 MONITOR_NAME = "wrangcombe_audio1"
-home_dir = os.path.expanduser('~')
-PROCESSED_DATA_DIR = os.path.join(home_dir, 'Developer/Projects_NotesData/NT(bio-acoustic-monitor)/data/processed')
+PROCESSED_DATA_DIR = '/Volumes/Extreme SSD/NatureThriveData/data/processed'
 
 @pytest.fixture(scope="session")
 def monitor_name():

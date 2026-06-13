@@ -2,6 +2,9 @@
 
 ### 1. Activate the Environment
 
+> **Before anything else:** Make sure the SSD is mounted. All pipeline data lives at
+> `/Volumes/Extreme SSD/NatureThriveData`. If the drive isn't connected, scripts will fail.
+
 From the project root:
 ```
 cd /Users/cawa/Developer/Github/PersonalGithub/bio-acoustic-monitor/nt-bird-detect
@@ -30,7 +33,7 @@ caffeinate -i python src/processing/process_audio_data_files.py
 python src/processing/process_parquet_files.py
 ```
 Outputs `recordings_MASTER.parquet` and `recordings_MASTER.csv` to:
-`~/Developer/Projects_NotesData/NT(bio-acoustic-monitor)/data/processed/wrangcombe_audio1/`
+`/Volumes/Extreme SSD/NatureThriveData/data/processed/wrangcombe_audio1/`
 
 **Step 4 — Generate aggregations and analytics**
 ```
@@ -57,4 +60,4 @@ python -m pytest tests/ -v
 | `test_no_date_gaps` | `recordings_MASTER.parquet` | Checks for missing dates between first and last recording |
 
 If date gaps are found, a CSV is exported to:
-`~/Developer/Projects_NotesData/NT(bio-acoustic-monitor)/data/processed/tests/missing_dates.csv`
+`/Volumes/Extreme SSD/NatureThriveData/data/processed/tests/missing_dates.csv`

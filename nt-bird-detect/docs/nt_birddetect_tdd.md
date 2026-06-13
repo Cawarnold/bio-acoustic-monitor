@@ -51,14 +51,14 @@ data/                       ← stored externally (SSD or separate local path)
 ```
 After each pipeline run, copy `recordings_MASTER.parquet` from `data/processed/{monitor_name}/` into `nt-streamlit/data/{monitor_name}/` and push to trigger a Streamlit Cloud redeploy.
 
-### 1. Ingestion Layer (Raw)
+### 3. Ingestion Layer (Raw)
 This layer handles the movement of data from the field recorders into the local environment.
 
 * **Current Status**: Manual ingestion. 
 * **Process**: .wav files are moved to `data/raw/{monitor_name}/DataLoad_{date}/Data/`.
 * **Future Automation**: Scripts will be added here to automate file transfers and verify data integrity before processing.
 
-### 2. Processing Layer
+### 4. Processing Layer
 The processing layer transforms raw audio into a structured, enriched master dataset.
 
 #### Phase A: Acoustic Monitor Analysis (`process_audio_data_files.py`)
@@ -72,7 +72,7 @@ The processing layer transforms raw audio into a structured, enriched master dat
 * **Enrichment (Upcoming)**: Designated point for integrating secondary datasets, including GPS coordinates and weather data.
 * **Normalization**: Ensures data types and schemas are consistent for the entire project history.
 
-### 3. Aggregations & Analytics Layer
+### 5. Aggregations & Analytics Layer
 This layer prepares the master data for high-speed retrieval by the dashboard.
 
 * **Script**: `aggregations_analytics()` (called at the end of the Processing Layer).
@@ -80,14 +80,14 @@ This layer prepares the master data for high-speed retrieval by the dashboard.
 * **Species Totals**: Calculates overall abundance counts for the species distribution charts.
 * **Hourly Patterns**: Bins detections into 24-hour activity windows to visualize peak detection times.
 
-### 4. Storage Tiers
+### 6. Storage Tiers
 | Tier | File Type | Logic |
 | :--- | :--- | :--- |
 | **Raw** | `.wav` | Unprocessed field recordings. Stored externally (~500GB, not in repo). |
 | **Processed** | `detections_YYYYMMDD.parquet` / `MASTER.parquet` / `MASTER.csv` | Cleaned, consolidated data. Stored externally, not in repo. CSV produced alongside parquet for sharing. |
 | **Analytics** | `species_totals` / `daily_unique_species` / `hourly_activity_patterns` / `csv/` | Pre-aggregated outputs. Stored externally in pipeline; copied to nt-streamlit for GitHub deployment. |
 
-### 5. Workflow Execution Sequence
+### 7. Workflow Execution Sequence
 To update the dashboard with new field data, run the following in order:
 1. `python src/processing/process_monitor_summary_log.py` (Processing Phase A - process monitor log)
 2. `caffeinate -i python src/processing/process_audio_data_files.py` (Processing Phase A - process audio data)
@@ -99,7 +99,7 @@ To update the dashboard with new field data, run the following in order:
 
 
 
-### 7. Testing
+### 8. Testing
 Tests live in `tests/` and use **pytest**. Run all tests with:
 ```
 pytest tests/
@@ -114,7 +114,54 @@ pytest tests/
 * **test_not_empty**: Asserts the master file contains at least one row.
 * **test_no_date_gaps**: Parses `file_date` (format `YYYYMMDD`) and asserts no missing dates between the earliest and latest recording.
 
-### 6. Deployment
+### 9. Future Development
+
+#### Auto-detect new DataLoad folders (`process_audio_data_files.py`)
+* **Current behaviour**: `dataload_folder` is hardcoded on line 55 and must be manually updated each time a new DataLoad batch arrives.
+* **Goal**: Automatically detect all unprocessed `DataLoad_*` folders by comparing folders in `data/raw/{monitor_name}/` against the processing manifest, and iterate over each one in date order.
+* **Approach**: Replace the hardcoded `dataload_folder` with a loop that:
+  1. Lists all `DataLoad_YYYYMMDD` folders in the raw monitor directory
+  2. Checks the manifest to skip folders already fully processed
+  3. Processes each unprocessed folder in chronological order
+
+### 10. Code Improvements & Tech Debt
+Observations from reviewing the pipeline scripts, utils, and tests. Captured as a backlog — not yet actioned.
+
+#### Configuration & structure
+* The directory config block (`data_directory_path`, `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `ANALYTICS_DATA_DIR`, `monitor_name`) is copy-pasted into all four entry-point scripts — centralise into a single `config.py` (or `.env`) imported everywhere.
+* The external data root `/Volumes/Extreme SSD/NatureThriveData` is hardcoded in every script and in `tests/conftest.py`. The User Guide mentions a `RAW_DATA_DIR` env var, but nothing actually reads one — wire up an env var / config so the path isn't baked into source.
+* `home_dir = os.path.expanduser('~')` is computed in three scripts but never used — dead code.
+* Each script appends to `sys.path` manually to import `utils`. Make `src` a proper package (`__init__.py` + `pyproject.toml`, installed via `pip install -e .`) so imports are clean and tests don't rely on path hacks.
+* Magic numbers are scattered: `min_conf=0.5` in the analyzer vs `confidence > 0.9` in the CSV exports vs `/ 24` for occupancy — promote to named config constants.
+* `monitor_name` is hardcoded to a single monitor in every script; no support for iterating multiple monitors (related to the multi-DataLoad goal in §9).
+
+#### Correctness / likely bugs
+* `daily_unique_species` groups by `['file_date', 'label']` then takes `nunique` of `label` — within each group that is always 1, so the metric doesn't measure what the comment ("Diversity over time") intends. Likely should count unique labels per `file_date`.
+* `hourly_activity_patterns` groups by the full `file_time` (HHMMSS), not by hour, so it isn't binned into 24 hourly windows as the TDD describes. `calculate_species_daily_profiles` extracts `hour` correctly and is the pattern to follow.
+* Filename date/time parsing uses fixed string slices (`file[9:17]`, `file[18:24]`) — brittle if the recorder's naming format ever changes. A regex or explicit format check would fail loudly instead of silently mis-parsing.
+* Consolidation simply concatenates daily parquets with no de-duplication — re-running a day (or an appended daily file) can introduce duplicate detections into MASTER.
+* `consolidate_daily_parquets` performs no dtype/schema normalisation, despite the "Normalization" claim in Phase B — `file_date`/`file_time` stay as strings and schema drift between batches would propagate silently.
+* `get_monitor_coords` uses only the last log row and silently falls back to hardcoded coordinates — a missing/garbled log would attribute detections to the wrong location without warning.
+
+#### Robustness & operations
+* Errors are caught with a broad `except Exception` that only prints — long overnight `caffeinate` runs have no log file, no log levels, and no way to distinguish a transient file error from a fatal one. Adopt the `logging` module writing to a timestamped log.
+* The manifest is written to disk (`to_parquet`) on every single file iteration — heavy I/O over thousands of files. Write periodically (every N files) or on exit, while keeping crash-resilience.
+* Within a day, each detection batch does a read-modify-write of the daily parquet (read existing → concat → rewrite), which grows quadratically as the day fills up — accumulate in memory and write once per day instead.
+* `process_audio_data_files.py` writes into `PROCESSED_DATA_DIR/{monitor}/` without `os.makedirs(..., exist_ok=True)`; it only works because the summary-log script created the dir first — make it self-sufficient.
+* BirdNET analysis is fully sequential; for ~500GB growing ~100GB/month, consider batching/parallelising the per-file analysis.
+
+#### Testing
+* Tests require the external SSD to be mounted (path hardcoded in `conftest.py`) and only cover MASTER completeness — none of the parsing, manifest, consolidation, or aggregation utils are tested.
+* Add small committed sample fixtures so the suite can run in CI without the SSD.
+
+#### Docs ↔ code drift (worth aligning)
+* TDD refers to `detections_YYYYMMDD.parquet`, but the code writes `recordings_batch_YYYYMMDD.parquet`.
+* Phase B mentions `recordings_batch_MASTER.parquet`; the code produces `recordings_MASTER.parquet`.
+* TDD says the Analytics layer computes the **Shannon Diversity Index**, but no Shannon calculation exists in the code yet.
+* TDD says `aggregations_analytics()` is "called at the end of the Processing Layer", but it is actually a standalone script run as a separate step (§7, step 4).
+* Two requirements files exist (`requirements.txt` and `20260116_requirements.txt`) — clarify which is authoritative.
+
+### 11. Deployment
 
 Streamlit Community Cloud is free and connects directly to GitHub. Here's how to deploy:                          
                                                                                                                    
