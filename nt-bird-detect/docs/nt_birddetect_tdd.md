@@ -36,6 +36,7 @@ bio-acoustic-monitor/
     src/
     docs/
     eda/
+    tests/
   nt-streamlit/             ← Streamlit dashboard (separate repo)
     data/                   ← analytics layer only, committed to GitHub
       wrangcombe_audio1/
@@ -97,6 +98,21 @@ To update the dashboard with new field data, run the following in order:
 6. to view dashboard loaclly run `streamlit run app.py`
 
 
+
+### 7. Testing
+Tests live in `tests/` and use **pytest**. Run all tests with:
+```
+pytest tests/
+```
+
+#### Structure
+| Folder | Covers |
+| :--- | :--- |
+| `tests/master_parquet/` | Integrity checks on `recordings_MASTER.parquet` |
+
+#### `tests/master_parquet/` — Completeness Tests
+* **test_not_empty**: Asserts the master file contains at least one row.
+* **test_no_date_gaps**: Parses `file_date` (format `YYYYMMDD`) and asserts no missing dates between the earliest and latest recording.
 
 ### 6. Deployment
 
