@@ -22,7 +22,7 @@ Every pipeline stage is split across **two files**. To understand any step, read
 This is the single place that holds every environment/location value the pipeline uses:
 - `DATA_DIR` — the data root (the SSD path), overridable via the `NT_DATA_DIR` env var.
 - `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `ANALYTICS_DATA_DIR` — derived from `DATA_DIR`.
-- `monitor_name` — which monitor the run targets (e.g. `wrangcombe_audio1`), overridable via `NT_MONITOR_NAME`.
+- `monitor_name` & `dataload_folder` — selected by the `NT_ENV` profile (`prod` → `wrangcombe_audio1` / `DataLoad_20260428`; `test` → `test_audio1` / `DataLoad_20260612`). Both profiles' values are written out side by side in `config.py`.
 - `monitor_coords` — fallback field-site coordinates (lat, lon) per monitor, used only if the summary log has no usable coordinates.
 
 If you want to know *where* data is read/written or *which monitor* is being processed, this is the only file you need to check. Change a value here and it applies across every script.
@@ -36,7 +36,7 @@ Each entry-point script (`src/processing/*.py`, `src/aggregations_analytics/*.py
 
 ### 3. Run the Pipeline
 
-Run the following scripts in order from the project root:
+**Shortcut:** `./run.sh prod` runs all four steps below in order (and `./run.sh test` runs the same pipeline against the test batch — see "Run the test pipeline"). Or run them manually:
 
 **Step 1 — Process monitor summary log**
 ```
@@ -63,6 +63,16 @@ python src/aggregations_analytics/aggregations_analytics.py
 **Step 5 — Copy master file to Streamlit repo**
 
 Copy `recordings_MASTER.parquet` from `data/processed/wrangcombe_audio1/` into `nt-streamlit/data/wrangcombe_audio1/` and push to trigger a Streamlit Cloud redeploy.
+
+#### Run the test pipeline
+
+To verify the whole pipeline still works after a change, run it against the small fixed test batch (`test_audio1`, 4 files):
+```
+./run.sh test
+```
+This sets `NT_ENV=test`, so `config.py` switches to the `test_audio1` monitor and the `DataLoad_20260612` batch. All outputs go under `data/processed/test_audio1/` (and `data/analytics/test_audio1/`) — production data is never read or overwritten. It runs real BirdNET on all four files, so expect it to take a few minutes.
+
+> First time only, make the runner executable: `chmod +x run.sh` (or invoke it as `bash run.sh test`).
 
 ---
 

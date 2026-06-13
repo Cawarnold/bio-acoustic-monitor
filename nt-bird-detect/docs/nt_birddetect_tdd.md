@@ -3,9 +3,8 @@
 ### 1. User Guide
 a. Clone from repo
 b. Copy data directory, with raw, processed, analytics directories inside from SSD or other location
-    b.1 OR, set the `NT_DATA_DIR` env var to your data root (the folder containing `data/raw`, `data/processed`, `data/analytics`); optionally set `NT_MONITOR_NAME` to switch monitors. If unset, the pipeline falls back to the default Extreme SSD path.
+    b.1 OR, set the `NT_DATA_DIR` env var to your data root (the folder containing `data/raw`, `data/processed`, `data/analytics`). If unset, the pipeline falls back to the default Extreme SSD path. Use `NT_ENV=test` (or `run.sh test`) to switch to the test monitor/batch.
        export NT_DATA_DIR="/Volumes/Extreme SSD/NatureThriveData"
-       export NT_MONITOR_NAME="wrangcombe_audio1"
 c. Build python environment
     brew install pyenv
     brew install ffmpeg
@@ -121,12 +120,36 @@ pytest tests/
 ### 9. Future Development
 
 #### Auto-detect new DataLoad folders (`process_audio_data_files.py`)
-* **Current behaviour**: `dataload_folder` is hardcoded on line 55 and must be manually updated each time a new DataLoad batch arrives.
+* **Current behaviour**: `dataload_folder` is set in `config.py` (per profile) and must be manually updated each time a new DataLoad batch arrives.
 * **Goal**: Automatically detect all unprocessed `DataLoad_*` folders by comparing folders in `data/raw/{monitor_name}/` against the processing manifest, and iterate over each one in date order.
 * **Approach**: Replace the hardcoded `dataload_folder` with a loop that:
   1. Lists all `DataLoad_YYYYMMDD` folders in the raw monitor directory
   2. Checks the manifest to skip folders already fully processed
   3. Processes each unprocessed folder in chronological order
+
+#### ✅ Test pipeline (run the full pipeline on a small fixed test batch) — implemented
+* **Goal**: Run the existing pipeline scripts end-to-end against a small, fixed test batch by invoking a single `test` command — without touching production (`wrangcombe_audio1`) data. Purpose: a fast sanity check that the whole pipeline still works after a change.
+* **Test data (already on the SSD)**: monitor `test_audio1`, batch `DataLoad_20260612`, 4 × `.wav` files (`S4A27301_20250918_*.wav`) under `data/raw/test_audio1/DataLoad_20260612/Data/`.
+* **Why it's safe**: every output path is keyed by `monitor_name`, so a test run writes only under `data/processed/test_audio1/` and `data/analytics/test_audio1/`. Production data is never read or overwritten.
+
+* **Plan**:
+  1. **Add a profile switch in `config.py`** — the one genuinely new idea. Read `ENV = os.environ.get("NT_ENV", "prod")`, then select `monitor_name` *and* `dataload_folder` from it, keeping both prod and test values visible in the one config file:
+     - `prod` → `wrangcombe_audio1`, `DataLoad_20260428`
+     - `test` → `test_audio1`, `DataLoad_20260612`
+  2. **Add a `test_audio1` entry to `config.monitor_coords`** — the test batch has no summary `.txt`, so `get_monitor_coords` will fall through to this hardcoded fallback (placeholder coords are fine; it's only a test).
+  3. **Source `dataload_folder` from `config`** — `process_audio_data_files.py` currently hardcodes it. Importing it from config lets the *same* scripts serve prod and test (and nudges toward the auto-detect goal above).
+  4. **Add a one-command runner** — a thin wrapper (e.g. `run.sh test` / `run.sh prod`) that sets `NT_ENV` and calls the four existing scripts in order. It orchestrates, it doesn't replace — the scripts stay as-is.
+  5. **(Optional) Smoke test** — a pytest that runs the test pipeline on the 4 files and asserts `data/processed/test_audio1/recordings_MASTER.parquet` is produced and non-empty.
+  6. **Document** — add a "Run the test pipeline" subsection to `how_to_guide.md`.
+
+* ✅ **Implemented** (decisions made):
+  - **Trigger**: `NT_ENV` env var (`prod` default, `test` for the test batch), read in `config.py`.
+  - **Runner**: `run.sh [prod|test]` shell wrapper that sets `NT_ENV` and calls the four existing scripts in order.
+  - **Depth**: runs real BirdNET on all four files (true end-to-end).
+  - **Coords**: placeholder `test_audio1` / `test_audio2` entries in `config.monitor_coords` (same as wrangcombe for now).
+  - `dataload_folder` was moved from a hardcoded value in `process_audio_data_files.py` into `config.py` (profile-selected).
+* **Verified**: ran `./run.sh test` on `DataLoad_20260612` end-to-end — 1127 detections, with master / CSV / analytics written under `test_audio1`, and `wrangcombe_audio1` confirmed untouched (writes are keyed by `monitor_name`).
+
 
 ### 10. Code Improvements & Tech Debt
 Observations from reviewing the pipeline scripts, utils, and tests. Captured as a backlog — not yet actioned.
@@ -144,6 +167,7 @@ Observations from reviewing the pipeline scripts, utils, and tests. Captured as 
 * ✅ **Done** — `get_monitor_coords` now tries the last log row, then the first row, then a per-monitor hardcoded fallback in `config.monitor_coords` (keyed by folder name), printing a warning at each fallback step. The magic coordinate literal was moved out of `utils` into `config.py`.
 
 #### Robustness & operations
+* ✅ **Done** — `parse_sm4_summary` and the `.wav` loop in `process_audio_data_files.py` now skip hidden / macOS AppleDouble files (`._*`). The SSD's (exFAT) filesystem writes a binary `._<name>` companion beside each file; these end in `.txt` / `.wav` and are returned by `os.listdir`, so they were being parsed as CSV (→ `UnicodeDecodeError`) or mis-parsed as recordings. Surfaced by the first test-pipeline run — affects the prod SSD too.
 * Errors are caught with a broad `except Exception` that only prints — long overnight `caffeinate` runs have no log file, no log levels, and no way to distinguish a transient file error from a fatal one. Adopt the `logging` module writing to a timestamped log.
 * The manifest is written to disk (`to_parquet`) on every single file iteration — heavy I/O over thousands of files. Write periodically (every N files) or on exit, while keeping crash-resilience.
 * Within a day, each detection batch does a read-modify-write of the daily parquet (read existing → concat → rewrite), which grows quadratically as the day fills up — accumulate in memory and write once per day instead.

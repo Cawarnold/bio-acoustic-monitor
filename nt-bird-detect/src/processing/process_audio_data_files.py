@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../")) # root dir of
 
 # Add src to path so we can import config and utils
 sys.path.append(os.path.join(PROJECT_ROOT, "src"))
-from config import RAW_DATA_DIR, PROCESSED_DATA_DIR, monitor_name
+from config import RAW_DATA_DIR, PROCESSED_DATA_DIR, monitor_name, dataload_folder
 from utils.processing_silver_utils import (
     analyze_audio_file, 
     get_monitor_coords, 
@@ -40,9 +40,7 @@ from utils.processing_silver_utils import (
 
 def run_audio_analysis():
     print("--- Starting BirdNET Audio Analysis ---")
-
-    # Update this to the specific DataLoad folder you want to process
-    dataload_folder = "DataLoad_20260428" #"DataLoad_20260121"
+    print(f"Monitor: {monitor_name} | Batch: {dataload_folder}")
     
     # Use the coordinates from your SM4 log
     lat, lon = get_monitor_coords(PROCESSED_DATA_DIR, monitor_name)
@@ -73,7 +71,7 @@ def run_audio_analysis():
 
     # Process each audio file
     for file in entries:
-        if not file.lower().endswith('.wav'): continue
+        if not file.lower().endswith('.wav') or file.startswith('.'): continue
         
         counter += 1
     

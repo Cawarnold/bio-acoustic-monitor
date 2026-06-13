@@ -17,12 +17,27 @@ RAW_DATA_DIR = os.path.join(DATA_DIR, "data/raw")
 PROCESSED_DATA_DIR = os.path.join(DATA_DIR, "data/processed")
 ANALYTICS_DATA_DIR = os.path.join(DATA_DIR, "data/analytics")
 
-# Active monitor. Override with the NT_MONITOR_NAME env var.
-monitor_name = os.environ.get("NT_MONITOR_NAME", "wrangcombe_audio1")
+# ==========================================
+# Pipeline profile: "prod" (default) or "test"
+# ==========================================
+# Set NT_ENV=test (e.g. via `run.sh test`) to run the whole pipeline against the
+# test monitor and batch instead of production. Both profiles' values are kept
+# here, side by side. Outputs are keyed by monitor_name, so a test run never
+# touches the production folders.
+ENV = os.environ.get("NT_ENV", "prod")
+
+if ENV == "test":
+    monitor_name = "test_audio1"
+    dataload_folder = "DataLoad_20260612"
+else:
+    monitor_name = "wrangcombe_audio1"
+    dataload_folder = "DataLoad_20260428"
 
 # Fallback field-site coordinates (lat, lon) per monitor, keyed by the monitor's
 # folder name. Used only as a last resort when the summary log has no usable
 # coordinates (see get_monitor_coords). Add an entry here for each new monitor.
 monitor_coords = {
     "wrangcombe_audio1": (50.9481, -3.2503),
+    "test_audio1": (50.9481, -3.2503),  # placeholder (same as wrangcombe) — test only
+    "test_audio2": (50.9481, -3.2503),  # placeholder (same as wrangcombe) — test only
 }

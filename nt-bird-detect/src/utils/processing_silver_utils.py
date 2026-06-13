@@ -41,8 +41,11 @@ def parse_sm4_summary(raw_monitor_path, monitor_name):
         load_date = folder.replace('DataLoad_', '') # Extract '20260121'
         folder_path = os.path.join(raw_monitor_path, folder)
         
-        # 2. Look for the .txt file inside that specific DataLoad folder
-        txt_files = [f for f in os.listdir(folder_path) if f.endswith('.txt')]
+        # 2. Look for the .txt file inside that specific DataLoad folder.
+        #    Skip hidden / macOS AppleDouble files (e.g. "._S4A27301_A_Summary.txt")
+        #    that the SSD's filesystem creates — they end in .txt but are binary.
+        txt_files = [f for f in os.listdir(folder_path)
+                     if f.endswith('.txt') and not f.startswith('.')]
         
         for file_name in txt_files:
             txt_path = os.path.join(folder_path, file_name)
