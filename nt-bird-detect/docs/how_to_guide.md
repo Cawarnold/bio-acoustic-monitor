@@ -23,6 +23,7 @@ This is the single place that holds every environment/location value the pipelin
 - `DATA_DIR` — the data root (the SSD path), overridable via the `NT_DATA_DIR` env var.
 - `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `ANALYTICS_DATA_DIR` — derived from `DATA_DIR`.
 - `monitor_name` — which monitor the run targets (e.g. `wrangcombe_audio1`), overridable via `NT_MONITOR_NAME`.
+- `monitor_coords` — fallback field-site coordinates (lat, lon) per monitor, used only if the summary log has no usable coordinates.
 
 If you want to know *where* data is read/written or *which monitor* is being processed, this is the only file you need to check. Change a value here and it applies across every script.
 

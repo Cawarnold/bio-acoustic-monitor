@@ -75,6 +75,8 @@ The processing layer transforms raw audio into a structured, enriched master dat
 * **Normalization**: Ensures data types and schemas are consistent for the entire project history.
 
 ### 5. Aggregations & Analytics Layer
+> **⚠️ Legacy / non-prod:** This layer was built to feed `nt-webapp`, which is currently shelved. The live Streamlit dashboard reads `recordings_MASTER.parquet` directly and aggregates on the fly, so these outputs are **not currently consumed**. Kept in case `nt-webapp` is resumed; the two known aggregation issues (see §10) are left unfixed for now.
+
 This layer prepares the master data for high-speed retrieval by the dashboard.
 
 * **Script**: `aggregations_analytics()` (called at the end of the Processing Layer).
@@ -136,12 +138,10 @@ Observations from reviewing the pipeline scripts, utils, and tests. Captured as 
 * ⏸️ **Won't do — intentional.** `monitor_name` is a single explicit value per pipeline run, by design. Keeping it hardcoded/visible means you can glance at a script and know exactly which monitor it will process, rather than tracing dynamic multi-monitor logic. Readability for a human running the script wins over abstraction here.
 
 #### Correctness / likely bugs
-* `daily_unique_species` groups by `['file_date', 'label']` then takes `nunique` of `label` — within each group that is always 1, so the metric doesn't measure what the comment ("Diversity over time") intends. Likely should count unique labels per `file_date`.
-* `hourly_activity_patterns` groups by the full `file_time` (HHMMSS), not by hour, so it isn't binned into 24 hourly windows as the TDD describes. `calculate_species_daily_profiles` extracts `hour` correctly and is the pattern to follow.
-* Filename date/time parsing uses fixed string slices (`file[9:17]`, `file[18:24]`) — brittle if the recorder's naming format ever changes. A regex or explicit format check would fail loudly instead of silently mis-parsing.
-* Consolidation simply concatenates daily parquets with no de-duplication — re-running a day (or an appended daily file) can introduce duplicate detections into MASTER.
-* `consolidate_daily_parquets` performs no dtype/schema normalisation, despite the "Normalization" claim in Phase B — `file_date`/`file_time` stay as strings and schema drift between batches would propagate silently.
-* `get_monitor_coords` uses only the last log row and silently falls back to hardcoded coordinates — a missing/garbled log would attribute detections to the wrong location without warning.
+* ⏸️ **Won't fix — legacy (non-prod).** Two aggregations in `aggregations_analytics.py` are wrong relative to their comments: `daily_unique_species` takes `nunique('label')` within a `['file_date', 'label']` group (always 1), and `hourly_activity_patterns` groups by the full `file_time` (HHMMSS) rather than by hour. But this whole analytics/gold layer was built for **nt-webapp** (shelved); the Streamlit app reads `recordings_MASTER.parquet` directly and bins by hour itself, so nothing live consumes these. Left as-is — revisit if nt-webapp resumes. See §5.
+* ⏸️ **Won't do — intentional.** Filename date/time parsing uses fixed string slices (`file[9:17]`, `file[18:24]`). The brittleness is the point: the SM4 recorder's filename format is fixed and known, so positional slicing is the simplest readable parse. If the format ever changes, this is *meant* to break so the change is noticed rather than silently absorbed. Revisit only if the recorder naming actually changes.
+* 🔜 **Deferred to future pipeline work (see §9).** Consolidation currently just concatenates daily parquets — no de-duplication (re-running a day could double-count) and no dtype/schema normalisation (despite the "Normalization" note in Phase B). Both are intentionally left until the pipeline is extended to ingest a new `DataLoad_*` folder of `.wav` files, where handling re-processing and consistent schemas across batches becomes essential.
+* ✅ **Done** — `get_monitor_coords` now tries the last log row, then the first row, then a per-monitor hardcoded fallback in `config.monitor_coords` (keyed by folder name), printing a warning at each fallback step. The magic coordinate literal was moved out of `utils` into `config.py`.
 
 #### Robustness & operations
 * Errors are caught with a broad `except Exception` that only prints — long overnight `caffeinate` runs have no log file, no log levels, and no way to distinguish a transient file error from a fatal one. Adopt the `logging` module writing to a timestamped log.

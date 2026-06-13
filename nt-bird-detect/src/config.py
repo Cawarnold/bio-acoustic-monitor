@@ -19,3 +19,10 @@ ANALYTICS_DATA_DIR = os.path.join(DATA_DIR, "data/analytics")
 
 # Active monitor. Override with the NT_MONITOR_NAME env var.
 monitor_name = os.environ.get("NT_MONITOR_NAME", "wrangcombe_audio1")
+
+# Fallback field-site coordinates (lat, lon) per monitor, keyed by the monitor's
+# folder name. Used only as a last resort when the summary log has no usable
+# coordinates (see get_monitor_coords). Add an entry here for each new monitor.
+monitor_coords = {
+    "wrangcombe_audio1": (50.9481, -3.2503),
+}

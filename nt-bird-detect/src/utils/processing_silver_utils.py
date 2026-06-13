@@ -7,6 +7,9 @@ import numpy as np
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
 
+# Central config (src is on sys.path via the calling script / conftest)
+from config import monitor_coords
+
 # ==========================================
 # parse_sm4_summary() - Parse SM4 Summary Utility
 # analyze_audio_file() - Parse Audio File Utility
@@ -84,29 +87,58 @@ def analyze_audio_file(analyzer, directory_path_file, lat, lon, date, min_conf):
 # Get Monitor Coordinates Utility
 # ==========================================
 
+def _coords_from_row(row):
+    """
+    Pulls (lat, lon) from a single summary-log row.
+    Raises if LAT/LON are missing or not numeric, so the caller can fall back.
+    """
+    lat, lon = row['LAT'], row['LON']
+    if pd.isna(lat) or pd.isna(lon):
+        raise ValueError("LAT/LON missing")
+
+    lat, lon = float(lat), float(lon)
+
+    # Adjust longitude if it is marked as West
+    if str(row['EW']).strip().lower() == 'w':
+        lon = -abs(lon)
+
+    return lat, lon
+
+
 def get_monitor_coords(processed_dir, monitor_name):
     """
-    Reads the processed summary log to find coordinates.
+    Returns (lat, lon) for the monitor, in order of preference:
+      1. Last row of the summary log  (most recent recorded location)
+      2. First row of the summary log (if the last row has no usable coords)
+      3. Hardcoded fallback for this monitor from config.monitor_coords
     """
+    fallback = monitor_coords.get(monitor_name)
     monitor_summary_log_path = os.path.join(processed_dir, monitor_name, "monitor_summary_log.parquet")
-    
+
     if os.path.exists(monitor_summary_log_path):
         df_log = pd.read_parquet(monitor_summary_log_path)
-        # We take the last recorded location in the log
-        latest_entry = df_log.iloc[-1]
-        
-        lat = float(latest_entry['LAT'])
-        lon = float(latest_entry['LON'])
-        
-        # Adjust longitude if it is marked as West
-        if str(latest_entry['EW']).strip().lower() == 'w':
-            lon = -abs(lon)
-            
-        return lat, lon
-    
-    # Fallback if no log is found
-    print(f"!! No summary log found at {monitor_summary_log_path}. Using defaults.")
-    return 50.9481, -3.2503
+
+        # 1. Last row (most recent location)
+        try:
+            return _coords_from_row(df_log.iloc[-1])
+        except Exception as e:
+            print(f"!! Could not read coords from last log row ({e}); trying first row.")
+
+        # 2. First row
+        try:
+            return _coords_from_row(df_log.iloc[0])
+        except Exception as e:
+            print(f"!! Could not read coords from first log row ({e}); using hardcoded fallback.")
+    else:
+        print(f"!! No summary log found at {monitor_summary_log_path}; using hardcoded fallback.")
+
+    # 3. Hardcoded fallback from config
+    if fallback is None:
+        raise ValueError(
+            f"No fallback coordinates configured for monitor '{monitor_name}'. "
+            f"Add an entry to monitor_coords in config.py."
+        )
+    return fallback
 
 # ==========================================
 # Processing Manifest Utilities

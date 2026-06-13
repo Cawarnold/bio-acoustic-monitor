@@ -5,6 +5,18 @@ import pandas as pd
 
 
 # ==========================================
+# LEGACY / NOT PRODUCTION
+# ==========================================
+# This analytics ("gold") layer was built to feed nt-webapp, which has been
+# shelved in favour of the Streamlit app (nt-streamlit). The Streamlit app reads
+# recordings_MASTER.parquet directly and aggregates on the fly, so nothing live
+# consumes these outputs. Kept in case nt-webapp is resumed.
+#
+# Known issues (left unfixed because non-prod):
+#   - daily_unique_species: nunique('label') within ['file_date', 'label'] is always 1.
+#   - hourly_activity_patterns: groups by full file_time (HHMMSS), not by hour.
+
+# ==========================================
 # 1. DIRECTORY CONFIGURATION
 # ==========================================
 
